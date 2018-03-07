@@ -37,8 +37,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
+        $this->homeRoutes();
 
+        $this->adminRoutes();
         //
     }
 
@@ -48,14 +49,24 @@ class RouteServiceProvider extends ServiceProvider
      * These routes all receive session state, CSRF protection, etc.
      *
      * @return void
+     *
+     * 前台路由
      */
-    protected function mapWebRoutes()
+    protected function homeRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+             ->namespace($this->namespace.'/home')
+             ->group(base_path('routes/home.php'));
     }
-
+    /*
+     * 后台路由
+     */
+    protected function adminRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace.'/admin')
+            ->group(base_path('routes/admin.php'));
+    }
     /**
      * Define the "api" routes for the application.
      *
