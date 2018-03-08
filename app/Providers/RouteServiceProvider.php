@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function homeRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace.'/home')
+             ->namespace($this->namespace.'\Home')
              ->group(base_path('routes/home.php'));
     }
     /*
@@ -64,7 +64,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function adminRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace.'/admin')
+            ->namespace($this->namespace.'\Admin')
             ->group(base_path('routes/admin.php'));
     }
     /**

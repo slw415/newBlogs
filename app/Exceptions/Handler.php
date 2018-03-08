@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -49,5 +50,14 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }
+
+//前后端未登录的跳转
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if (in_array('admin', $exception->guards())) {
+            return $request->expectsJson() ? response()->json(['msg'=>'用户未登录'], 401) : redirect()->guest(url('admin/login'));
+        }
+        return $request->expectsJson() ? response()->json(['msg'=>'用户未登录'], 401) : redirect()->guest(route('login'));
     }
 }
