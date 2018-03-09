@@ -20,8 +20,7 @@ class IndexController extends Controller
         //情空所有sessioncookie
         $request->session()->flush();
         $cookie= Auth::guard('admin')->getRecallerName();
-        Cookie::forget($cookie);
-        return redirect('/admin/login');
-
+        $cookie1=Cookie::forget($cookie);
+        return redirect('/admin/login')->withCookie($cookie1);
     }
 }
