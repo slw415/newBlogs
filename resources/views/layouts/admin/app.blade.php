@@ -28,6 +28,18 @@
         </div>
     </div>
 </nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 modal-content">
+              <ul class="list-group">
+                  <li class="list-group-item">创建用户</li>
+                  <li class="list-group-item">免费 Window 空间托管</li>
+                  <li class="list-group-item">图像的数量</li>
+                  <li class="list-group-item">24*7 支持</li>
+          </ul>
+        </div>
+    </div>
+</div>
     @yield('content')
 </body>
 </html>
