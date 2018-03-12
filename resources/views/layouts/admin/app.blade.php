@@ -13,7 +13,6 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
         <a class="navbar-brand" href="/">SLW菜鸟博客后台</a>
         <span class="col-md-2"style="color: #dddddd;font-size: 10px"><strong>{{$username}}</strong>很高兴见到你</span>
         <!-- 这个 div 加上 justify-content-end 样式即可 -->
@@ -26,11 +25,9 @@
                 <li class="nav-item" id="navEssayPage"><a class="nav-link" href="#"> 随笔 </a></li>--}}
             </ul>
         </div>
-    </div>
 </nav>
-<div class="container">
     <div class="row">
-        <div class="col-lg-2 modal-content">
+        <div class="modal-content">
               <ul class="list-group">
                   <li class="list-group-item">创建用户</li>
                   <li class="list-group-item">免费 Window 空间托管</li>
@@ -39,7 +36,7 @@
           </ul>
         </div>
     </div>
-</div>
-    @yield('content')
+
+@yield('content')
 </body>
 </html>
