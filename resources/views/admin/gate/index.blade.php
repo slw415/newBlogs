@@ -4,6 +4,7 @@
 
 
 @section('content')
+    <div class="container">
     <ul class="nav nav-pills"id="first_ul">
         <li class="nav-item">
             <a class="nav-link " href="#">首页</a>
@@ -14,34 +15,44 @@
     </ul>
     <form class="form-inline">
         <input type="text" class="form-control "style="width: 350px;margin-left: 5px" id="user" placeholder="输入用户或者权限名">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary"style="cursor: pointer">搜索</button>
     </form>
-    <button type="button" class="btn btn-primary btn-lg"style="margin: 20px 0 20px 7px">添加权限</button>
-    <table class="table table-condensed">
+    <button type="button" class="btn btn-primary btn-lg"style="margin: 20px 0 20px 7px;cursor: pointer">添加权限</button>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>用户</th>
+            <th>角色</th>
+            <th>权限</th>
+            <th>操作</th>
+        </tr>
+        </thead>
         <tbody>
         <tr>
-            <th data-field="name">用户账号</th>
-            <th data-field="pwd">用户密码</th>
-            <th data-field="t_name">教师姓名</th>
+            <td>001</td>
+            <td>Rammohan </td>
+            <td>Reddy</td>
+            <td>A+</td>
+            <td>A+</td>
         </tr>
         <tr>
-            <th data-field="name">用户账号</th>
-            <th data-field="pwd">用户密码</th>
-            <th data-field="t_name">教师姓名</th>
+            <td>002</td>
+            <td>Smita</td>
+            <td>Pallod</td>
+            <td>A</td>
+            <td>A+</td>
         </tr>
         <tr>
-            <th data-field="name">用户账号</th>
-            <th data-field="pwd">用户密码</th>
-            <th data-field="t_name">教师姓名</th>
-        </tr>
-        <tr>
-            <th data-field="name">用户账号</th>
-            <th data-field="pwd">用户密码</th>
-            <th data-field="t_name">教师姓名</th>
+            <td>003</td>
+            <td>Rabindranath</td>
+            <td>Sen</td>
+            <td>A+</td>
+            <td>A+</td>
         </tr>
         </tbody>
     </table>
-
+    </div>
 @endsection
 
 @section('js')

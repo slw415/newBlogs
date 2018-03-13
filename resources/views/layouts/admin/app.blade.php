@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <style>
         a{
             color: #dddddd;text-decoration:none
@@ -15,21 +15,15 @@
         a:hover{
             color: #fff;text-decoration:none
         }
-        .list-group li{
-            background: #2a2730;border: 1px solid #5e5e5e;color: #dddddd;
-        }
-        .list-group li:hover{
-            background: #5e5d5d;border: 1px solid #5e5e5e;color: #fff;
-        }
+       .black{
+           background: #2a2730;
+       }
+
         body{
             background: #f5f8fa;
         }
 
-        .breadcrumb > li + li:before {
-            color: #CCCCCC;
-            content: "/ ";
-            padding: 0 5px;
-        }
+
     </style>
 </head>
 <body>
@@ -50,9 +44,9 @@
 
     <div class="row">
         <div class="col-md-2">
-              <ul class="list-group">
-                  <a href="{{url('/admin/gate')}}"><li class="list-group-item ">权限管理</li></a>
-                  <a href="{{url('/admin/gate')}}"><li class="list-group-item ">权限管理</li></a>
+              <ul class="list-group" id="two_ul">
+                  <li class="black list-group-item"><a href="#"><i class="icon-home"></i> Home</a></li>
+                  <li class=" black list-group-item "><a href="{{url('/admin/gate')}}"><i class="icon-book"></i> 权限管理</a></li>
           </ul>
         </div>
 
@@ -77,7 +71,22 @@
             $(this).removeClass('active');  // 删除元素的样式
 
         });
+        $("#two_ul li").mouseover(function() {
+
+            $(this).addClass('active');  //添加当前元素的样式
+            $(this).removeClass('black');  // 删除元素的样式
+
+
+        });
+        $("#two_ul li ").mouseout(function() {
+            $(this).removeClass('active');  // 删除元素的样式
+            $(this).addClass('black');  //添加当前元素的样式
+        });
     });
+
+
+
+
 </script>
 @yield('js')
 </body>
