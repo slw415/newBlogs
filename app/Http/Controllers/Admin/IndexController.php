@@ -11,9 +11,9 @@ class IndexController extends Controller
 {
     public function index()
     {
-        //获取当前首页
-        $username=Auth::user()->name;
-        return view('admin/index',compact('username'));
+        /*//获取当前首页
+        $username=Auth::user()->name;*/
+        return view('admin/index');
     }
     public function logout(Request $request)
     {

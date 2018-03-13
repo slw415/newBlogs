@@ -16,6 +16,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'auth:admin'], function () {
             Route::get('/','IndexController@index');
             Route::get('/logout', 'IndexController@logout');
+            Route::resource('/gate','PostController');
     });
 
 });
