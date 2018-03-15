@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}">
+    <link href="{{ asset('/layer/mobile/need/layer.css') }}">
     <style>
+        body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
         a{
-            color: #dddddd;text-decoration:none
+            color: #dddddd;text-decoration:none;
         }
         a:hover{
             color: #fff;text-decoration:none
@@ -25,6 +27,7 @@
 
 
     </style>
+    @yield('css')
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -41,12 +44,12 @@
             </ul>
         </div>
 </nav>
-
     <div class="row">
         <div class="col-md-2">
               <ul class="list-group" id="two_ul">
-                  <li class="black list-group-item"><a href="#"><i class="icon-home"></i> Home</a></li>
-                  <li class=" black list-group-item "><a href="{{url('/admin/gate')}}"><i class="icon-book"></i> 权限管理</a></li>
+                  <li class="black list-group-item"><a href="{{url('/admin')}}"><i class="icon-home"></i> Home</a></li>
+                  <li class=" black list-group-item "><a href="{{url('/admin/permissions')}}"><i class="icon-book"></i> 权限管理</a></li>
+                  <li class=" black list-group-item "><a href="{{url('/admin/roles')}}"><i class=" icon-user-md"></i> 角色管理</a></li>
           </ul>
         </div>
 
@@ -58,6 +61,7 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="{{asset('/layer/layer.js')}}"></script>
 <script>
     $(function(){
 
@@ -82,6 +86,7 @@
             $(this).removeClass('active');  // 删除元素的样式
             $(this).addClass('black');  //添加当前元素的样式
         });
+
     });
 
 
