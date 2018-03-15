@@ -37,7 +37,7 @@
 
         @if(count($admins)>0)
             @foreach($admins as $v)
-            <tr id="list{{$v->id}}"style="line-height: 35px">
+            <tr id="list{{$v->id}}" style="line-height: 35px">
                 <td>{{$v->id}}</td>
                 <td>{{$v->name}}</td>
                 <td>{{$v->title}}</td>

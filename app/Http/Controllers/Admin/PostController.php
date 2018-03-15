@@ -28,7 +28,6 @@ class PostController extends Controller
     // 显示创建权限页面
     public function create()
     {
-
         return view('admin.permissions.create');
     }
     //post保存创建的权限
