@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin;
+use App\Http\Requests\LoginPostRequest;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use PhpParser\Node\Stmt\TraitUseAdaptation\Precedence;
 
@@ -85,6 +87,57 @@ class PostController extends Controller
     }
     public function loginshow()
     {
-        return view('admin.permissions.loginshow');
+        $role=Role::all();
+        return view('admin.permissions.loginshow',compact('role'));
     }
+    public function loginpost(LoginPostRequest $request)
+    {
+        $input=$request->except('_token');
+        $imgfile=$request->file('imgfile');
+        //查找数据库是否有当前用户名
+        $admin=Admin::where('name',$input['name'])->first();
+        if ($admin)
+        {
+            return back()->withErrors('用户已经存在!');
+        }
+
+        //判断这个文件是否存在和判断文件上传过程中是否出错
+        if($request->hasFile('imgfile')&& $imgfile->isValid())
+        {
+            $newName=$this->saveFile($imgfile);
+            $create=Admin::create(array_merge($input,['password'=>bcrypt($input['password']),'imgfile'=>'/photo/'.$newName]));
+            $id=Admin::where('name',$input['name'])->select('id')->first();
+            $db=DB::table('admin_role')->insert(['role_id'=>$input['role_id'],'admin_id'=>$id['id']]);
+            if($create&&$db)
+            {
+                return redirect('/admin');
+            }
+        }else{
+            return back()->withErrors('图片不存在或者上传失败!');
+        }
+
+    }
+    //头像存储
+    public function saveFile($file)
+    {
+        //图片规定后缀
+        $fileTypes = ["png", "jpg", "gif","jpeg"];
+        // 获取图片后缀
+        $extension = $file->extension();
+        //是否是要求的图片
+        $isInFileType = in_array($extension,$fileTypes);
+        if ($isInFileType)
+        {
+        //新的文件名（保证不重叠）
+        $newName=date('YmdHis').mt_rand(100,900).'.'.$extension;
+        //存储到photo目录
+        $store_result = $file->storeAs('', $newName, ['disk'=>'photo']);
+        return $newName;
+        }else{
+            return back()->withErrors( '图片格式不符合要求，请重新添加');
+        }
+
+    }
+
+
 }

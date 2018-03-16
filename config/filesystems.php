@@ -47,7 +47,11 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
-
+      //自定义文件目录路径
+        'photo' => [
+            'driver' => 'local',
+            'root' =>public_path('photo'),
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

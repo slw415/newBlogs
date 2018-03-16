@@ -73,14 +73,14 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             $this->username() => 'required|string|max:6',
-            'password' => 'required|string|max:6',
+            'password' => 'required|string|min:6',
         ],[
             $this->username().'required'=>'账号必须填写',
             $this->username().'string'=>'账号必须填写字符串',
             $this->username().'max'=>'账号不大于6位',
             'password.required'=>'密码必须填写',
             'password.string'=>'密码必须填写字符串',
-            'password.max'=>'密码不大于6位',
+            'password.min'=>'密码最小6位',
         ]);
 
     }

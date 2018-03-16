@@ -16,8 +16,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'auth:admin'], function () {
             Route::get('/','IndexController@index');
             Route::get('/logout', 'IndexController@logout');
+            //显示创建后台用户
+            Route::get('/create','PostController@loginshow');
             //创建后台用户
-            Route::match(['get','post'],'/create','PostController@loginshow');
+            Route::post('/create/post','PostController@loginpost');
             //权限
             Route::resource('/permissions','PostController');
             //角色
