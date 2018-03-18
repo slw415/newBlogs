@@ -24,13 +24,14 @@ class PostController extends Controller
         })->orWhere(function ($query) use ($input){
             $query->where('title','like','%'.$input.'%');
         })->paginate(5);
-
-        return view('admin.permissions.index',compact('admins','input'));
+        $img=Auth::user();
+        return view('admin.permissions.index',compact('admins','input','img'));
     }
     // 显示创建权限页面
     public function create()
     {
-        return view('admin.permissions.create');
+        $img=Auth::user();
+        return view('admin.permissions.create',compact('img'));
     }
     //post保存创建的权限
     public function store(Request $request)
@@ -46,9 +47,9 @@ class PostController extends Controller
     //修改权限
     public function edit($id)
     {
-
+        $img=Auth::user();
         $permission=Permission::find($id);
-        return view('admin.permissions.edit',compact('permission'));
+        return view('admin.permissions.edit',compact('permission','img'));
     }
     //更新权限
     public function update(Request $request,$id)
@@ -87,8 +88,9 @@ class PostController extends Controller
     }
     public function loginshow()
     {
+        $img=Auth::user();
         $role=Role::all();
-        return view('admin.permissions.loginshow',compact('role'));
+        return view('admin.permissions.loginshow',compact('role','img'));
     }
     public function loginpost(LoginPostRequest $request)
     {

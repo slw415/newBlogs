@@ -7,7 +7,7 @@ use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 class RoleController extends Controller
 {
     //显示页表页面
@@ -19,14 +19,14 @@ class RoleController extends Controller
         })->orWhere(function ($query) use ($input){
             $query->where('title','like','%'.$input.'%');
         })->paginate(5);
-
-        return view('admin.roles.index',compact('admin','input'));
+        $img=Auth::user();
+        return view('admin.roles.index',compact('admin','input','img'));
     }
     // 显示创建角色页面
     public function create()
     {
-
-        return view('admin.roles.create');
+        $img=Auth::user();
+        return view('admin.roles.create',compact('img'));
     }
     //post保存创建的角色
     public function store(Request $request)
@@ -42,9 +42,9 @@ class RoleController extends Controller
     //修改角色
     public function edit($id)
     {
-
+        $img=Auth::user();
         $role=Role::find($id);
-        return view('admin.roles.edit',compact('role'));
+        return view('admin.roles.edit',compact('role','img'));
     }
     //更新角色
     public function update(Request $request,$id)
@@ -76,8 +76,8 @@ class RoleController extends Controller
     public function permissions(Role $role)
     {
         $permissions = Permission::all();
-
-       return view('admin.roles.permissions',compact('permissions', 'role'));
+        $img=Auth::user();
+       return view('admin.roles.permissions',compact('permissions', 'role','img'));
     }
     //更改当前权限
     public function permission(Request $request,$id)

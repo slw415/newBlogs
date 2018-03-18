@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/create','PostController@loginshow');
             //创建后台用户
             Route::post('/create/post','PostController@loginpost');
+            //后台用户列表
+            Route::resource('/list','ListController');
             //权限
             Route::resource('/permissions','PostController');
             //角色

@@ -13,7 +13,8 @@ class IndexController extends Controller
     {
         /*//获取当前首页
         $username=Auth::user()->name;*/
-        return view('admin/index');
+        $img=Auth::user();
+        return view('admin/index',compact('img'));
     }
     public function logout(Request $request)
     {

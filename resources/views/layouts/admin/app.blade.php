@@ -35,9 +35,16 @@
         <span class="col-md-2"style="color: #dddddd;font-size: 10px">很高兴见到你</span>
         <!-- 这个 div 加上 justify-content-end 样式即可 -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div class="btn-group open">
+                <a class="btn " href="#"><img width="50px"height="50px" src="{{$img->imgfile}}"/> {{$img->name}}</a>
+                <a class="btn  dropdown-toggle" data-toggle="dropdown" href="#"style="margin-top: 12px"></a>
+                <ul class="dropdown-menu"style="background: #2a2730;color: #f5f5f5">
+                    <li class="nav-item" id="logout"><a class="nav-link" href="{{url('/admin/logout')}}"> 退出 </a></li>
+                </ul>
+            </div>
             <ul class="navbar-nav" id="headerNav">
                 <li class="nav-item" id="navMainPage"><a class="nav-link" href="#"> 前台首页 </a></li>
-                <li class="nav-item" id="logout"><a class="nav-link" href="{{url('/admin/logout')}}"> 退出 </a></li>
+
              {{--   <li class="nav-item" id="navTechPage"><a class="nav-link" href="#"> 技术 </a></li>
                 <li class="nav-item" id="navFoodPage"><a class="nav-link" href="#"> 摄影 </a></li>
                 <li class="nav-item" id="navEssayPage"><a class="nav-link" href="#"> 随笔 </a></li>--}}
@@ -48,10 +55,13 @@
         <div class="col-md-2">
               <ul class="list-group" id="two_ul">
                   <li class="black list-group-item"><a href="{{url('/admin')}}"><i class="icon-home"></i> Home</a></li>
+                  @can('User-management')
                   <li class=" black list-group-item "><a href="{{url('/admin/create')}}"><i class=" icon-user-md"></i> 后台用户创建</a></li>
+                   <li class=" black list-group-item "><a href="{{url('/admin/list')}}"><i class=" icon-user-md"></i> 后台用户列表</a></li>
                   <li class=" black list-group-item "><a href="{{url('/admin/permissions')}}"><i class="icon-book"></i> 权限管理</a></li>
                   <li class=" black list-group-item "><a href="{{url('/admin/roles')}}"><i class=" icon-magic "></i> 角色管理</a></li>
-          </ul>
+                  @endcan
+              </ul>
         </div>
 
         <div class="col-md-10">
