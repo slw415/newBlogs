@@ -6,6 +6,7 @@ use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 class RoleController extends Controller
@@ -14,11 +15,16 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $input=$request->input('input');
-        $admin=Role::where(function ($query) use ($input){
-            $query->where('name','like','%'.$input.'%');
-        })->orWhere(function ($query) use ($input){
-            $query->where('title','like','%'.$input.'%');
-        })->paginate(5);
+        if(!Cache::has('roles')) {
+            Cache::rememberForever('roles', function () use ($input) {
+                return   $admin=Role::where(function ($query) use ($input){
+                    $query->where('name','like','%'.$input.'%');
+                })->orWhere(function ($query) use ($input){
+                    $query->where('title','like','%'.$input.'%');
+                })->paginate(5);
+            });
+        }
+        $admin=Cache::get('roles');
         $img=Auth::user();
         return view('admin.roles.index',compact('admin','input','img'));
     }
@@ -106,5 +112,11 @@ class RoleController extends Controller
             $msg = "保存记录失败！";
         }
         return response()->json(['status' => $status, 'msg' => $msg]);
+    }
+    public function cache(Request $request)
+    {
+        Cache::forget('roles');
+        $request->session()->flash('message', '[ 缓存更新成功！]');
+        return redirect('/admin/roles');
     }
 }

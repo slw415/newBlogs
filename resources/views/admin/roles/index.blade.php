@@ -16,6 +16,13 @@
             <a class="nav-link disabled" href="{{url('/admin/roles')}}">角色列表</a>
         </li>
     </ul>
+        <a class="btn btn-primary" href="{{url('admin/roles/new/cache')}}" style="margin-bottom: 20px">
+            <i class="icon-refresh icon-spin"></i>更新缓存</a>
+        @if (\Illuminate\Support\Facades\Session::has('message'))
+            <div class="alert alert-success "id="message">
+                {{\Illuminate\Support\Facades\Session::get('message')}}
+            </div>
+        @endif
     <form class="form-inline" method="get" action="{{url('/admin/roles')}}">
         {{csrf_field()}}
         <input type="text" name="input" class="form-control "style="width: 350px;margin-left: 5px" id="user" placeholder="输入角色名或者备注"value="{{isset($input) ?$input:''}}">
@@ -68,7 +75,6 @@
                     '_token': "{{ csrf_token() }}",
                     'id': "{{ $v->id }}"
                 }, function (data) {
-                     location.reload();
                     if (data.status == 0) {
                         layer.msg(data.msg, {icon: 6, time: 1500});
                     } else {

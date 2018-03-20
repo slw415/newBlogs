@@ -9,6 +9,7 @@ use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use PhpParser\Node\Stmt\TraitUseAdaptation\Precedence;
@@ -19,11 +20,17 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $input=$request->input('input');
-        $admins=Permission::where(function ($query) use ($input){
-            $query->where('name','like','%'.$input.'%');
-        })->orWhere(function ($query) use ($input){
-            $query->where('title','like','%'.$input.'%');
-        })->paginate(5);
+        //从数据库获取它们并将其添加到缓存中，
+        if(!Cache::has('permissions')) {
+            Cache::rememberForever('permissions', function () use ($input) {
+                return  $admins=Permission::where(function ($query) use ($input){
+                    $query->where('name','like','%'.$input.'%');
+                })->orWhere(function ($query) use ($input){
+                    $query->where('title','like','%'.$input.'%');
+                })->paginate(5);
+            });
+        }
+        $admins=Cache::get('permissions');
         $img=Auth::user();
         return view('admin.permissions.index',compact('admins','input','img'));
     }
@@ -139,6 +146,12 @@ class PostController extends Controller
             return back()->withErrors( '图片格式不符合要求，请重新添加');
         }
 
+    }
+    public function cache(Request $request)
+    {
+        Cache::forget('permissions');
+        $request->session()->flash('message', '[ 缓存更新成功！]');
+        return redirect('/admin/permissions');
     }
 
 

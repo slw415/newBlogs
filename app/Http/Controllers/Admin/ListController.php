@@ -7,16 +7,25 @@ use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class ListController extends Controller
 {
     public function index(Request $request)
     {
-        $input=$request->input('input');
-        $img=Auth::user();
-        $list=Admin::with('roles')->where('name','like','%'.$input.'%')->paginate(5);
-        return view('admin.list.index',compact('img','list','input'));
+        $input = $request->input('input');
+        $img = Auth::user();
+        //从数据库获取它们并将其添加到缓存中，
+        if(!Cache::has('list')) {
+               Cache::rememberForever('list', function () use ($input) {
+                return Admin::with('roles')->where('name', 'like', '%' . $input . '%')->paginate(5);
+            });
+        }
+        $list=Cache::get('list');
+        return View::make('admin.list.index', compact('img', 'list', 'input'));
+
     }
     public function edit(Request $request,$id)
     {
@@ -92,6 +101,11 @@ class ListController extends Controller
         }
         return response()->json(['status' => $status, 'msg' => $msg]);
 
+    }
+    public function cache()
+    {
+        Cache::forget('list');
+        return redirect('/admin/list');
     }
 
 }

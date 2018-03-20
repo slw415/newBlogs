@@ -16,11 +16,19 @@
             <a class="nav-link disabled" href="{{url('/admin/permissions')}}">权限列表</a>
         </li>
     </ul>
-    <form class="form-inline" method="get" action="{{url('/admin/permissions')}}">
+        <a class="btn btn-primary" href="{{url('admin/permissions/new/cache')}}" style="margin-bottom: 20px">
+            <i class="icon-refresh icon-spin"></i>更新缓存</a>
+        @if (\Illuminate\Support\Facades\Session::has('message'))
+            <div class="alert alert-success "id="message">
+                {{\Illuminate\Support\Facades\Session::get('message')}}
+            </div>
+        @endif
+        <form class="form-inline" method="get" action="{{url('/admin/permissions')}}">
         {{csrf_field()}}
         <input type="text" name="input" class="form-control "style="width: 350px;margin-left: 5px" id="user" placeholder="输入权限名或者备注"value="{{isset($input) ?$input:''}}">
         <button type="submit" class="btn btn-primary"style="cursor: pointer">搜索</button>
     </form>
+
     <a href="{{url('/admin/permissions/create')}}"><button type="button" class="btn btn-primary btn-lg"style="margin: 20px 0 20px 7px;cursor: pointer">添加权限</button></a>
     <table class="table table-striped">
         <thead>
@@ -65,7 +73,6 @@
                     '_token': "{{ csrf_token() }}",
                     'id': "{{ $v->id }}"
                 }, function (data) {
-                     location.reload();
                     if (data.status == 0) {
                         layer.msg(data.msg, {icon: 6, time: 1500});
                     } else {
