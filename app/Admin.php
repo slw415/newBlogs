@@ -41,4 +41,25 @@ class Admin extends Authenticatable
             return !! $role->intersect($this->roles)->count();
 
     }
+    //头像存储
+    public function saveFile($file)
+    {
+        //图片规定后缀
+        $fileTypes = ["png", "jpg", "gif","jpeg"];
+        // 获取图片后缀
+        $extension = $file->extension();
+        //是否是要求的图片
+        $isInFileType = in_array($extension,$fileTypes);
+        if ($isInFileType)
+        {
+            //新的文件名（保证不重叠）
+            $newName=date('YmdHis').mt_rand(100,900).'.'.$extension;
+            //存储到photo目录
+            $store_result = $file->storeAs('', $newName, ['disk'=>'photo']);
+            return $newName;
+        }else{
+            return back()->withErrors( '图片格式不符合要求，请重新添加');
+        }
+
+    }
 }

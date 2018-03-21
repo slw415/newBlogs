@@ -16,6 +16,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'auth:admin'], function () {
             Route::get('/','IndexController@index');
             Route::get('/logout', 'IndexController@logout');
+            //修改当前用户信息
+             Route::get('/edit', 'IndexController@edit');
+             Route::post('/update', 'IndexController@update');
             //显示创建后台用户
             Route::get('/create','PostController@loginshow');
             //创建后台用户

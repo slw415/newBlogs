@@ -12,17 +12,21 @@
     <style>
         body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
         a{
-            color: #dddddd;text-decoration:none;
+            color: #333;text-decoration:none;
         }
         a:hover{
-            color: #fff;text-decoration:none
+            color: #007bff;text-decoration:none ;
         }
        .black{
-           background: #2a2730;
+           background: #f2f2f2;border: 1px solid #ccc;
        }
 
         body{
             background: #f5f8fa;
+        }
+        .gray{
+            border: 1px solid #ccc;
+
         }
 
 
@@ -31,12 +35,16 @@
 </head>
 <body>
     @include('layouts.admin.navs')
+    <div class="row ">
+        <div class="col-md-2" id="two_ul">
     @include('layouts.admin.uls')
+        </div>
+
         <div class="col-md-10">
 
         @yield('content')
         </div>
-
+    </div>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
@@ -73,6 +81,15 @@
         message.style.display='none';
     }
     setTimeout("message()",2000);
+
+    $("#two_ul").find("dt").click(function() {
+            if( $(this).siblings().is(':hidden')) {
+                $(this).siblings().slideDown();
+            }else {
+                $(this).siblings().slideUp();
+            }
+
+    });
 
 
 </script>

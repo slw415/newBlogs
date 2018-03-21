@@ -13,6 +13,7 @@
     </style>
 @endsection
 
+
 @section('content')
     <div class="container">
     <ul class="nav nav-pills"id="first_ul">

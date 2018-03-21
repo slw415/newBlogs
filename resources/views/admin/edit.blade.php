@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','修改后台用户')
+@section('title','修改用户')
 
 @section('css')
 
@@ -23,17 +23,21 @@
 </style>
 @section('content')
     <div class="container">
-    <ul class="nav nav-pills"id="first_ul">
-        <li class="nav-item">
-            <a class="nav-link " href="{{url('/admin')}}">首页</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="{{url('/admin/list/'.$id.'/edit')}}">修改后台用户</a>
-        </li>
-    </ul>
-        <form role="form"method="post"action="{{url('/admin/list/'.$data['id'])}}" enctype="multipart/form-data"id="formData">
+        <ul class="nav nav-pills"id="first_ul">
+            <li class="nav-item">
+                <a class="nav-link " href="{{url('/admin')}}">首页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="{{url('/edit')}}">修改当前后台用户</a>
+            </li>
+        </ul>
+        @if (\Illuminate\Support\Facades\Session::has('message'))
+            <div class="alert alert-success "id="message">
+                {{\Illuminate\Support\Facades\Session::get('message')}}
+            </div>
+        @endif
+        <form role="form" method="post"action="{{url('/admin/update')}}" enctype="multipart/form-data" id="formData">
             {{csrf_field()}}
-            <input type="hidden" name="_method" value="PATCH">
             <div class="form-group">
                 <label for="name">名称</label>
                 <input type="text" class="form-control" id="name" placeholder="请输入名称"name="name" value="{{$data['name']}}">
@@ -100,15 +104,15 @@
                 reader.readAsDataURL(f);
             }
         }
-            $(function () {
+        $(function () {
 
-                var rl={{$rl_id->role_id}}
-                $('#role_id option').each(function () {
-                    if($(this).val() ==rl){
-                        $(this).attr("selected",true);
-                    }
-                })
+            var rl={{$rl_id->role_id}}
+            $('#role_id option').each(function () {
+                if($(this).val() ==rl){
+                    $(this).attr("selected",true);
+                }
             })
+        })
 
 
     </script>

@@ -4,10 +4,12 @@
     <!-- 这个 div 加上 justify-content-end 样式即可 -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <div class="btn-group open">
-            <a class="btn " href="#"><img width="50px"height="50px" src="{{$img->imgfile}}"/> {{$img->name}}</a>
-            <a class="btn  dropdown-toggle" data-toggle="dropdown" href="#"style="margin-top: 12px"></a>
+            <a class="btn " href="#"style="color: #dddddd"><img width="50px"height="50px" src="{{$img->imgfile}}"/> {{$img->name}}</a>
+            <a class="btn  dropdown-toggle" data-toggle="dropdown" href="#"style="margin-top: 12px;color: #dddddd"></a>
             <ul class="dropdown-menu"style="background: #2a2730;color: #f5f5f5">
-                <li class="nav-item" id="logout"><a class="nav-link" href="{{url('/admin/logout')}}"> 退出 </a></li>
+                <li class="nav-item" id="logout"><a class="nav-link" href="{{url('/admin/edit')}}"style="color: #dddddd"> 修改个人信息 </a></li>
+                <li class="nav-item" id="logout"><a class="nav-link" href="{{url('/admin/logout')}}"style="color: #dddddd"> 退出 </a></li>
+
             </ul>
         </div>
         <ul class="navbar-nav" id="headerNav">

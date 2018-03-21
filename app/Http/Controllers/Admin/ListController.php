@@ -33,7 +33,7 @@ class ListController extends Controller
         $role=Role::all()->toArray();
         $data=Admin::where('id',$id)->first()->toArray();
         $rl_id=DB::table('admin_role')->where('admin_id',$id)->select('role_id')->first();
-        return view('admin.list.edit',compact('img','data','role','rl_id'));
+        return view('admin.list.edit',compact('img','data','role','rl_id','id'));
     }
     public function update(Request $request,$id)
     {
@@ -46,7 +46,8 @@ class ListController extends Controller
         //判断这个文件是否存在和判断文件上传过程中是否出错
         if($request->hasFile('imgfile')&& $imgfile->isValid())
         {
-            $newName=$this->saveFile($imgfile);
+            $admin=new Admin();
+            $newName=$admin->saveFile($imgfile);
             $create=Admin::where('id',$id)->update(array_merge($input,['imgfile'=>'/photo/'.$newName]));
             $id=Admin::where('name',$input['name'])->select('id')->first();
             $db=DB::table('admin_role')->where('admin_id',$id)->update(['role_id'=>$role_id,'admin_id'=>$id['id']]);
@@ -65,27 +66,7 @@ class ListController extends Controller
         }
 
     }
-    //头像存储
-    public function saveFile($file)
-    {
-        //图片规定后缀
-        $fileTypes = ["png", "jpg", "gif","jpeg"];
-        // 获取图片后缀
-        $extension = $file->extension();
-        //是否是要求的图片
-        $isInFileType = in_array($extension,$fileTypes);
-        if ($isInFileType)
-        {
-            //新的文件名（保证不重叠）
-            $newName=date('YmdHis').mt_rand(100,900).'.'.$extension;
-            //存储到photo目录
-            $store_result = $file->storeAs('', $newName, ['disk'=>'photo']);
-            return $newName;
-        }else{
-            return back()->withErrors( '图片格式不符合要求，请重新添加');
-        }
 
-    }
     public function destroy(Request $request)
     {
         $input=$request->input('id');
@@ -102,9 +83,10 @@ class ListController extends Controller
         return response()->json(['status' => $status, 'msg' => $msg]);
 
     }
-    public function cache()
+    public function cache(Request $request)
     {
         Cache::forget('list');
+        $request->session()->flash('message', '[ 缓存更新成功！]');
         return redirect('/admin/list');
     }
 
