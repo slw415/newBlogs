@@ -31,6 +31,7 @@
             <a class="nav-link disabled" href="{{url('/admin/create')}}">创建后台用户</a>
         </li>
     </ul>
+        <div class="ml-3">
         <form role="form"method="post"action="{{url('/admin/create/post')}}" enctype="multipart/form-data"id="formData">
             {{csrf_field()}}
             <div class="form-group">
@@ -68,6 +69,7 @@
             </div>
             <button type="submit" class="btn btn-default">提交</button>
         </form>
+    </div>
     </div>
     @if (count($errors) > 0)
         <div class="alert alert-danger">

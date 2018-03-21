@@ -16,13 +16,16 @@
             <a class="nav-link disabled" href="{{url('/admin/list')}}">后台用户列表</a>
         </li>
     </ul>
-        <a class="btn btn-primary" href="{{url('admin/list/new/cache')}}" style="margin-bottom: 20px">
+        <div class="ml-3 ">
+        <a class="btn btn-primary" href="{{url('admin/list/new/cache')}}">
             <i class="icon-refresh icon-spin"></i>更新缓存</a>
+        </div>
         @if (\Illuminate\Support\Facades\Session::has('message'))
             <div class="alert alert-success "id="message">
                 {{\Illuminate\Support\Facades\Session::get('message')}}
             </div>
         @endif
+        <div class="mt-2 ml-2 ">
     <form class="form-inline" method="get" action="{{url('/admin/list')}}">
         {{csrf_field()}}
         <input type="text" name="input" class="form-control "style="width: 350px;margin-left: 5px" id="user" placeholder="输入用户"value="{{isset($input)?$input:''}}">
@@ -65,7 +68,7 @@
         </tbody>
     </table>
     </div>
-
+    </div>
 @endsection
 
 @section('js')

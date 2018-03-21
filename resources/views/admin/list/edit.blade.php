@@ -31,6 +31,7 @@
             <a class="nav-link disabled" href="{{url('/admin/list/'.$id.'/edit')}}">修改后台用户</a>
         </li>
     </ul>
+        <div class="ml-3">
         <form role="form"method="post"action="{{url('/admin/list/'.$data['id'])}}" enctype="multipart/form-data"id="formData">
             {{csrf_field()}}
             <input type="hidden" name="_method" value="PATCH">
@@ -65,6 +66,7 @@
             </div>
             <button type="submit" class="btn btn-default">提交</button>
         </form>
+    </div>
     </div>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
