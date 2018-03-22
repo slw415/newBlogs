@@ -21,16 +21,18 @@
             <i class="icon-refresh icon-spin"></i>更新缓存</a>
         </div>
         @if (\Illuminate\Support\Facades\Session::has('message'))
-            <div class="alert alert-success "id="message">
+            <div class="alert alert-success ml-3"id="message">
                 {{\Illuminate\Support\Facades\Session::get('message')}}
             </div>
         @endif
         <div class="mt-2 ml-2">
         <form class="form-inline" method="get" action="{{url('/admin/permissions')}}">
         {{csrf_field()}}
-        <input type="text" name="input" class="form-control "style="width: 350px;margin-left: 5px" id="user" placeholder="输入权限名或者备注"value="{{isset($input) ?$input:''}}">
+        <input type="text" name="input" class="form-control ml-1"style="width: 350px;" id="user" placeholder="输入权限名或者备注"value="{{isset($input) ?$input:''}}">
         <button type="submit" class="btn btn-primary"style="cursor: pointer">搜索</button>
+
     </form>
+            <div class="mt-2 ml-1"><p>目前共查找到<strong class="text-primary">{{$admins->total()}}</strong>个职位！且每页显示<strong class="text-primary">{{$admins->perPage()}}</strong>条数。</p></div>
      <div class="mt-2 ml-2">
     <a href="{{url('/admin/permissions/create')}}"><button type="button" class="btn btn-primary btn-lg"style="cursor: pointer">添加权限</button></a>
         </div>
@@ -49,7 +51,7 @@
 
         @if(count($admins)>0)
             @foreach($admins as $v)
-            <tr id="list{{$v->id}}" style="line-height: 35px">
+            <tr id="list{{$v->id}}">
                 <td>{{$v->id}}</td>
                 <td>{{$v->name}}</td>
                 <td>{{$v->title}}</td>
@@ -58,6 +60,8 @@
                 <td><span><a class="btn btn-small btn-primary" href="{{url('/admin/permissions/'.$v->id.'/edit')}}"><i class="icon-edit"></i>修改</a></span>&nbsp;<span><a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a></span></td>
             </tr>
            @endforeach
+        @else
+            <div class="text-muted">对不起！没有符合条件的记录！</div>
         @endif
         </tbody>
     </table>

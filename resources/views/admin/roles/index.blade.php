@@ -21,16 +21,17 @@
             <i class="icon-refresh icon-spin"></i>更新缓存</a>
         </div>
         @if (\Illuminate\Support\Facades\Session::has('message'))
-            <div class="alert alert-success "id="message">
+            <div class="alert alert-success ml-3"id="message">
                 {{\Illuminate\Support\Facades\Session::get('message')}}
             </div>
         @endif
         <div class="mt-2 ml-2">
     <form class="form-inline" method="get" action="{{url('/admin/roles')}}">
         {{csrf_field()}}
-        <input type="text" name="input" class="form-control "style="width: 350px;margin-left: 5px" id="user" placeholder="输入角色名或者备注"value="{{isset($input) ?$input:''}}">
+        <input type="text" name="input" class="form-control ml-1"style="width: 350px;" id="user" placeholder="输入角色名或者备注"value="{{isset($input) ?$input:''}}">
         <button type="submit" class="btn btn-primary"style="cursor: pointer">搜索</button>
     </form>
+            <div class="mt-2 ml-1"><p>目前共查找到<strong class="text-primary">{{$admin->total()}}</strong>个职位！且每页显示<strong class="text-primary">{{$admin->perPage()}}</strong>条数。</p></div>
             <div class="mt-2 ml-2">
     <a href="{{url('/admin/roles/create')}}"><button type="button" class="btn btn-primary btn-lg"style="cursor: pointer">添加角色</button></a>
             </div>
@@ -49,7 +50,7 @@
 
         @if(count($admin)>0)
             @foreach($admin as $v)
-            <tr id="list{{$v->id}}"style="line-height: 35px">
+            <tr id="list{{$v->id}}">
                 <td>{{$v->id}}</td>
                 <td>{{$v->name}}</td>
                 <td>{{$v->title}}</td>
@@ -60,6 +61,8 @@
                 </td>
             </tr>
            @endforeach
+        @else
+            <div class="text-muted">对不起！没有符合条件的记录！</div>
         @endif
         </tbody>
     </table>

@@ -39,7 +39,12 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/roles/new/cache','RoleController@cache');
             //显示所有权限
             Route::get('/all/roles/permissions/{role}','RoleController@permissions');
-
+            //友情链接
+            Route::resource('/links','LinkController');
+            //更新友情链接缓存
+            Route::get('/links/new/cache','LinkController@cache');
+            //导航栏
+            Route::resource('/navs','NavController');
     });
 
 });

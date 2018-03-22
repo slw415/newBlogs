@@ -17,8 +17,81 @@ class IndexController extends Controller
         /*//获取当前首页
         $username=Auth::user()->name;*/
         $img=Auth::user();
-        return view('admin/index',compact('img'));
+        $br=$this->browse_info();
+        $lang=$this->get_lang();
+        $os=$this->get_os();
+        return view('admin/index',compact('img','br','lang','os'));
     }
+    /**
+     * 获得访问者浏览器
+     */
+    function browse_info() {
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+            $br = $_SERVER['HTTP_USER_AGENT'];
+            if (preg_match('/MSIE/i', $br)) {
+                $br = 'MSIE';
+            } else if (preg_match('/Firefox/i', $br)) {
+                $br = 'Firefox';
+            } else if (preg_match('/Chrome/i', $br)) {
+                $br = 'Chrome';
+            } else if (preg_match('/Safari/i', $br)) {
+                $br = 'Safari';
+            } else if (preg_match('/Opera/i', $br)) {
+                $br = 'Opera';
+            } else {
+                $br = 'Other';
+            }
+            return $br;
+        } else {
+            return 'unknow';
+        }
+    }
+    /**
+     * 获得访问者浏览器语言
+     */
+   public function get_lang()
+   {
+       if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+           $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
+           $lang = substr($lang, 0, 5);
+           if (preg_match('/zh-cn/i', $lang)) {
+               $lang = '简体中文';
+           } else if (preg_match('/zh/i', $lang)) {
+               $lang = '繁体中文';
+           } else {
+               $lang = 'English';
+           }
+           return $lang;
+       } else {
+           return 'unknow';
+       }
+   }
+    /**
+     * 获得访客操作系统
+     */
+    function get_os() {
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+            $os = $_SERVER['HTTP_USER_AGENT'];
+            if (preg_match('/win/i', $os)) {
+                $os = 'Windows';
+            } else if (preg_match('/mac/i', $os)) {
+                $os = 'MAC';
+            } else if (preg_match('/linux/i', $os)) {
+                $os = 'Linux';
+            } else if (preg_match('/unix/i', $os)) {
+                $os = 'Unix';
+            } else if (preg_match('/bsd/i', $os)) {
+                $os = 'BSD';
+            } else {
+                $os = 'Other';
+            }
+            return $os;
+        } else {
+            return 'unknow';
+        }
+    }
+
     public function logout(Request $request)
     {
         //情空所有sessioncookie

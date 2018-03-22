@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','后台用户列表')
+@section('title','友情链接列表')
 
 @section('css')
 
@@ -13,11 +13,11 @@
             <a class="nav-link " href="{{url('/admin')}}">首页</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="{{url('/admin/list')}}">后台用户列表</a>
+            <a class="nav-link disabled" href="{{url('/admin/links')}}">友情链接列表</a>
         </li>
     </ul>
         <div class="ml-3 ">
-        <a class="btn btn-primary" href="{{url('admin/list/new/cache')}}">
+        <a class="btn btn-primary" href="{{url('admin/links/new/cache')}}">
             <i class="icon-refresh icon-spin"></i>更新缓存</a>
         </div>
         @if (\Illuminate\Support\Facades\Session::has('message'))
@@ -28,19 +28,19 @@
         <div class="mt-2 ml-2 ">
     <form class="form-inline" method="get" action="{{url('/admin/list')}}">
         {{csrf_field()}}
-        <input type="text" name="input" class="form-control ml-1"style="width: 350px;" id="user" placeholder="输入用户"value="{{isset($input)?$input:''}}">
+        <input type="text" name="input" class="form-control "style="width: 350px;" id="user" placeholder="输入用户"value="{{isset($input)?$input:''}}">
         <button type="submit" class="btn btn-primary"style="cursor: pointer">搜索</button>
     </form>
-            <div class="mt-2 ml-1"><p>目前共查找到<strong class="text-primary">{{$list->total()}}</strong>个职位！且每页显示<strong class="text-primary">{{$list->perPage()}}</strong>条数。</p></div>
+        <div class="mt-2 ml-1"><p>目前共查找到<strong class="text-primary">{{$list->total()}}</strong>个职位！且每页显示<strong class="text-primary">{{$list->perPage()}}</strong>条数。</p></div>
+            <div class="mt-2 ml-2">
+                <a href="{{url('/admin/links/create')}}"><button type="button" class="btn btn-primary btn-lg"style="cursor: pointer">添加友情链接</button></a>
+            </div>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
-            <th>用户</th>
-            <th>手机</th>
-            <th>生日</th>
-            <th>角色</th>
-            <th>头像</th>
+            <th>友情地址</th>
+            <th>友情站点</th>
             <th>创建时间</th>
             <th>更新时间</th>
             <th>操作</th>
@@ -48,42 +48,35 @@
         </thead>
         <tbody>
         @if(count($list)>0)
-        @foreach($list as $v)
-        <tr id="list{{$v->id}}">
-            <td>{{$v->id}}</td>
-            <td>{{$v->name}}</td>
-            <td>{{$v->mobile}}</td>
-            <td>{{$v->birthday}}</td>
-            @foreach($v->roles  as $v1)
-
-                <td><a class="btn btn-small btn-primary" href="#">{{$v1->name}}</a></td>
+            @foreach($list as $v)
+                <tr id="list{{$v->id}}">
+                    <td>{{$v->id}}</td>
+                    <td>{{$v->url}}</td>
+                    <td>{{$v->name}}</td>
+                    <td>{{$v->created_at}}</td>
+                    <td>{{$v->updated_at}}</td>
+                    <td><span><a class="btn btn-small btn-primary" href="{{url('/admin/links/'.$v->id.'/edit')}}"><i class="icon-edit"></i>修改</a></span>&nbsp;<span><a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a></span></td>
+                </tr>
             @endforeach
-            <td><img style="width:50px;height: 50px" src="{{asset($v->imgfile)}}"/></td>
-            <td>{{$v->created_at}}</td>
-            <td>{{$v->updated_at}}</td>
-            <td><a class="btn btn-small btn-primary" href="{{url('/admin/list/'.$v->id.'/edit')}}"><i class="icon-edit"></i>修改</a>
-                <a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a>
-            </td>
-        </tr>
-         @endforeach
         @else
             <div class="text-muted">对不起！没有符合条件的记录！</div>
         @endif
         </tbody>
     </table>
+
     </div>
+        {!! $list->links() !!}
     </div>
 @endsection
 
 @section('js')
     <script>
-
         @foreach($list as $v)
         $('#list{{$v->id}}').find('td .del').click(function () {
             layer.confirm('您确定要删除这条记录？', {
                 btn: ['确定', '取消'] //按钮
             }, function () {
-                $.post('{{ url('/admin/list/'.$v->id) }}', {
+                $.post('{{ url('/admin/links/'.$v->id) }}', {
                     '_method': 'delete',
                     '_token': "{{ csrf_token() }}",
                     'id': "{{ $v->id }}"
@@ -98,4 +91,5 @@
         })
         @endforeach
     </script>
+
 @endsection
