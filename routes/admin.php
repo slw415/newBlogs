@@ -45,6 +45,10 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/links/new/cache','LinkController@cache');
             //导航栏
             Route::resource('/navs','NavController');
+            //文章管理
+            Route::resource('/articles','ArticleController');
+            //更新友情链接缓存
+            Route::get('/articles/new/cache','ArticleController@cache');
     });
 
 });

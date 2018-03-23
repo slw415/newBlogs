@@ -16,3 +16,11 @@
                 <dt class="black list-group-item item2"><a href="#"><i class="icon-link"></i> 友情链接</a></dt>
                 <dd class=" gray list-group-item "><a href="{{url('/admin/links')}}"><i class=" icon-link"></i> 友情链接管理</a></dd>
         </dl>
+        <dl  class="list-group ">
+                <dt class="black list-group-item item2"><a href="#"><i class=" icon-bookmark"></i> 导航栏</a></dt>
+                <dd class=" gray list-group-item "><a href="{{url('/admin/navs')}}"><i class=" icon-bookmark"></i>导航栏管理</a></dd>
+        </dl>
+        <dl  class="list-group ">
+                <dt class="black list-group-item item2"><a href="#"><i class=" icon-pencil"></i> 文章管理</a></dt>
+                <dd class=" gray list-group-item "><a href="{{url('/admin/articles')}}"><i class="icon-pencil"></i>文章管理</a></dd>
+        </dl>

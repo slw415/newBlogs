@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','创建友情链接')
+@section('title','创建导航栏')
 
 @section('css')
     <style>
@@ -20,22 +20,31 @@
             <a class="nav-link " href="{{asset('/admin')}}">首页</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="{{url('/admin/links')}}">友情链接列表</a>
+            <a class="nav-link disabled" href="{{url('/admin/navs')}}">友情链接列表</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="{{url('/admin/links/create')}}">创建友情链接</a>
+            <a class="nav-link disabled" href="{{url('/admin/navs/create')}}">创建友情链接</a>
         </li>
     </ul>
-        <div class="container"style="margin-top: 20px">
-            <form action="{{url('/admin/links')}}" method="post">
+        <div class="container">
+            <form action="{{url('/admin/navs')}}" method="post">
                 {{csrf_field()}}
+                    <div class="form-group">
+                    <label for="name">选择导航栏</label>
+                    <select class="form-control" name="pid">
+                        <option value="0">1级导航</option>
+                        @foreach($nav as $v)
+                        <option value="{{$v->id}}">{{$v->name}}</option>
+                         @endforeach
+                    </select>
+                    </div>
                 <div class="form-group">
-                    <label for="url">友情地址</label>
-                    <input type="text" class="form-control"name="url" id="url" placeholder="输入友情地址">
+                    <label for="name">导航栏名字</label>
+                    <input type="text" class="form-control"name="name" id="name" placeholder="输入导航栏名字">
                 </div>
                 <div class="form-group">
-                    <label for="name">友情站点</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="输入友情站点">
+                    <label for="title">导航栏英文名字</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="导航栏英文名字">
                 </div>
                 <button type="submit" class="btn btn-primary">提交</button>
             </form>
@@ -47,6 +56,7 @@
                 </ul>
             @endif
         </div>
+
     </div>
 
 @endsection

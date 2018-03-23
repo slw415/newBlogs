@@ -56,7 +56,8 @@ class LinkController extends Controller
         } else {
             return back()->with('errors', '填充失败，请稍后重试');
         }
-    }    //ajax删除权限
+    }
+    //ajax删除权限
     public function destroy(Request $request)
     {
         $input = $request->except('_method', '_token');
