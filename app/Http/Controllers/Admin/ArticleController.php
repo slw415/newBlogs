@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Admin;
 use App\Model\Article;
 use App\Model\Nav;
 
@@ -17,29 +18,38 @@ class ArticleController extends Controller
     {
         $input = $request->input('input');
         $img = Auth::user();
-        //从数据库获取它们并将其添加到缓存中，
-        if(!Cache::has('articles')) {
-            Cache::rememberForever('links', function () use ($input) {
-                return Article::where('title', 'like', '%' . $input . '%')->paginate(25);
-            });
-        }
-        $list=Cache::get('links');
+
+            $list=Article::where('title', 'like', '%' . $input . '%')->paginate(10);
+
+
         return View::make('admin.articles.index', compact('img', 'list', 'input'));
     }
     public function create()
     {
         $img=Auth::user();
-        return view('admin.articles.create',compact('img'));
+        $nav=Nav::select('id','name')->orderBy('pid', 'ASC')->get();
+        return view('admin.articles.create',compact('img','nav'));
     }
     public function store(Request $request)
     {
         $input=$request->except('_token');
-        dd($input);
+        $imgfile=$request->file('imgfile');
+        //判断这个文件是否存在和判断文件上传过程中是否出错
+        if($request->hasFile('imgfile')&& $imgfile->isValid())
+        {
+            $admin=new Admin();
+            $newName=$admin->saveFile($imgfile);
+            $create=Article::create(['cid'=>$input['cid'],'title'=>$input['title'],'user'=>$input['user'],'imgfile'=>'/photo/'.$newName,'keyword'=>$input['keyword'],'introduction'=>$input['introduction'],'content'=>$input['introduction'],'watch'=>0]);
+            if($create)
+            {
+                return redirect('/admin/articles');
+            }else {
+                return back()->with('errors', '填充失败，请稍后重试');
+            }
+        }else{
+            return back()->withErrors('图片不存在或者上传失败!');
+        }
+
     }
-    public function cache(Request $request)
-    {
-        Cache::forget('articles');
-        $request->session()->flash('message', '[ 缓存更新成功！]');
-        return redirect('/admin/articles');
-    }
+
 }

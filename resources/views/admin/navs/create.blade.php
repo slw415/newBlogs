@@ -31,10 +31,12 @@
                 {{csrf_field()}}
                     <div class="form-group">
                     <label for="name">选择导航栏</label>
-                    <select class="form-control" name="pid">
+                    <select class="form-control" name="cid">
                         <option value="0">1级导航</option>
+
                         @foreach($nav as $v)
-                        <option value="{{$v->id}}">{{$v->name}}</option>
+
+                        <option value="{{$v['id']}}">{{$v['name']}}</option>
                          @endforeach
                     </select>
                     </div>

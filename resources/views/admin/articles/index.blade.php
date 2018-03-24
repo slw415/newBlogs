@@ -16,15 +16,6 @@
             <a class="nav-link disabled" href="{{url('/admin/articles')}}">文章列表</a>
         </li>
     </ul>
-        <div class="ml-3 ">
-        <a class="btn btn-primary" href="{{url('admin/articles/new/cache')}}">
-            <i class="icon-refresh icon-spin"></i>更新缓存</a>
-        </div>
-        @if (\Illuminate\Support\Facades\Session::has('message'))
-            <div class="alert alert-success ml-3"id="message">
-                {{\Illuminate\Support\Facades\Session::get('message')}}
-            </div>
-        @endif
         <div class="mt-2 ml-2 ">
     <form class="form-inline" method="get" action="{{url('/admin/list')}}">
         {{csrf_field()}}
@@ -44,7 +35,7 @@
             <th>简介</th>
             <th>标签</th>
             <th>缩略图</th>
-            <th>流量人数</th>
+            <th>浏览人数</th>
             <th>创建时间</th>
             <th>更新时间</th>
             <th>操作</th>
@@ -55,11 +46,11 @@
             @foreach($list as $v)
                 <tr id="list{{$v->id}}">
                     <td>{{$v->id}}</td>
-                    <td>{{$v->title}}</td>
-                    <td>{{$v->user}}</td>
-                    <td>{{$v->introduction}}</td>
+                    <td>{{str_limit($v->title, $limit = 5, $end = '...')}}</td>
+                    <td>{{str_limit($v->user, $limit = 5, $end = '...')}}</td>
+                    <td id="p3">{{str_limit($v->introduction, $limit = 5, $end = '...')}}</td>
                     <td>{{$v->keyword}}</td>
-                    <td></td>
+                    <td><img src="{{$v->imgfile}}"width="50px"height="50px"/></td>
                     <th>{{$v->watch}}</th>
                     <td>{{$v->created_at}}</td>
                     <td>{{$v->updated_at}}</td>
@@ -80,6 +71,12 @@
 @section('js')
     <script>
         @foreach($list as $v)
+        $("#list" + '{{$v->id}}').find('#ps3').mouseover(function () {
+            alert(1)
+            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->introduction)) !!}",$("#list" + '{{$v->id}}').find('#ps4'), {
+                tips: [4, '#78BA32']
+            });
+        });
         $('#list{{$v->id}}').find('td .del').click(function () {
             layer.confirm('您确定要删除这条记录？', {
                 btn: ['确定', '取消'] //按钮

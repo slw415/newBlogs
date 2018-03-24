@@ -29,6 +29,21 @@
 
         }
 
+         .fileinput-button {
+             position: relative;
+             display: inline-block;
+             overflow: hidden;
+         }
+
+        .fileinput-button input{
+            position:absolute;
+            right: 0px;
+            top: 0px;
+            opacity: 0;
+            -ms-filter: 'alpha(opacity=0)';
+            font-size: 200px;
+        }
+
 
     </style>
     @yield('css')

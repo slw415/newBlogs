@@ -19,8 +19,8 @@ class CreateArticlesTable extends Migration
             $table->string('introduction');
             $table->string('keyword');
             $table->string('user');
-            $table->string('img');
-            $table->string('content');
+            $table->string('imgfile');
+            $table->text('content');
             $table->integer('watch');
             $table->integer('cid');
             $table->timestamps();
