@@ -20,11 +20,21 @@ class ArticleController extends Controller
         //从数据库获取它们并将其添加到缓存中，
         if(!Cache::has('articles')) {
             Cache::rememberForever('links', function () use ($input) {
-                return Article::where('title', 'like', '%' . $input . '%')->paginate(5);
+                return Article::where('title', 'like', '%' . $input . '%')->paginate(25);
             });
         }
         $list=Cache::get('links');
         return View::make('admin.articles.index', compact('img', 'list', 'input'));
+    }
+    public function create()
+    {
+        $img=Auth::user();
+        return view('admin.articles.create',compact('img'));
+    }
+    public function store(Request $request)
+    {
+        $input=$request->except('_token');
+        dd($input);
     }
     public function cache(Request $request)
     {

@@ -19,7 +19,7 @@ class LinkController extends Controller
         //从数据库获取它们并将其添加到缓存中，
         if(!Cache::has('links')) {
             Cache::rememberForever('links', function () use ($input) {
-                return Link::where('name', 'like', '%' . $input . '%')->paginate(5);
+                return Link::where('name', 'like', '%' . $input . '%')->paginate(25);
             });
         }
         $list=Cache::get('links');

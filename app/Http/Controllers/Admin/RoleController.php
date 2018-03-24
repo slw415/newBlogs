@@ -21,7 +21,7 @@ class RoleController extends Controller
                     $query->where('name','like','%'.$input.'%');
                 })->orWhere(function ($query) use ($input){
                     $query->where('title','like','%'.$input.'%');
-                })->paginate(5);
+                })->paginate(25);
             });
         }
         $admin=Cache::get('roles');

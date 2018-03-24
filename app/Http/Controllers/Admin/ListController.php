@@ -20,7 +20,7 @@ class ListController extends Controller
         //从数据库获取它们并将其添加到缓存中，
         if(!Cache::has('list')) {
                Cache::rememberForever('list', function () use ($input) {
-                return Admin::with('roles')->where('name', 'like', '%' . $input . '%')->paginate(5);
+                return Admin::with('roles')->where('name', 'like', '%' . $input . '%')->paginate(25);
             });
         }
         $list=Cache::get('list');
