@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}">
     <link href="{{ asset('/layer/mobile/need/layer.css') }}">
+    <link href="{{ asset('/layouts/css/layer.css') }}">
     <style>
         body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
         a{
@@ -64,6 +65,7 @@
 <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script src="{{asset('/layer/layer.js')}}"></script>
+    <script src="{{asset('/layouts/layui.js')}}"></script>
 <script>
     $(function(){
 

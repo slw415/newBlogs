@@ -33,10 +33,8 @@
             <th>标题</th>
             <th>作者</th>
             <th>简介</th>
-            <th>标签</th>
             <th>缩略图</th>
             <th>浏览人数</th>
-            <th>创建时间</th>
             <th>更新时间</th>
             <th>操作</th>
         </tr>
@@ -46,13 +44,11 @@
             @foreach($list as $v)
                 <tr id="list{{$v->id}}">
                     <td>{{$v->id}}</td>
-                    <td>{{str_limit($v->title, $limit = 5, $end = '...')}}</td>
-                    <td>{{str_limit($v->user, $limit = 5, $end = '...')}}</td>
-                    <td id="p3">{{str_limit($v->introduction, $limit = 5, $end = '...')}}</td>
-                    <td>{{$v->keyword}}</td>
+                    <td class="ps1">{{str_limit($v->title, $limit = 5, $end = '...')}}</td>
+                    <td class="ps2">{{str_limit($v->user, $limit = 5, $end = '...')}}</td>
+                    <td class="ps3">{{str_limit($v->introduction, $limit = 5, $end = '...')}}</td>
                     <td><img src="{{$v->imgfile}}"width="50px"height="50px"/></td>
                     <th>{{$v->watch}}</th>
-                    <td>{{$v->created_at}}</td>
                     <td>{{$v->updated_at}}</td>
                     <td><span><a class="btn btn-small btn-primary" href="{{url('/admin/articles/'.$v->id.'/edit')}}"><i class="icon-edit"></i>修改</a></span>&nbsp;<span><a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a></span></td>
                 </tr>
@@ -71,9 +67,18 @@
 @section('js')
     <script>
         @foreach($list as $v)
-        $("#list" + '{{$v->id}}').find('#ps3').mouseover(function () {
-            alert(1)
-            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->introduction)) !!}",$("#list" + '{{$v->id}}').find('#ps4'), {
+        $("#list{{$v->id}}").find('.ps1').mouseover(function () {
+            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->introduction)) !!}",$("#list{{$v->id}}").find('.ps1'), {
+                tips: [4, '#78BA32']
+            });
+        });
+        $("#list{{$v->id}}").find('.ps2').mouseover(function () {
+            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->introduction)) !!}",$("#list{{$v->id}}").find('.ps2'), {
+                tips: [4, '#78BA32']
+            });
+        });
+        $("#list{{$v->id}}").find('.ps3').mouseover(function () {
+            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->introduction)) !!}",$("#list{{$v->id}}").find('.ps3'), {
                 tips: [4, '#78BA32']
             });
         });

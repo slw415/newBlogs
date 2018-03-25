@@ -39,7 +39,9 @@ class ArticleController extends Controller
         {
             $admin=new Admin();
             $newName=$admin->saveFile($imgfile);
-            $create=Article::create(['cid'=>$input['cid'],'title'=>$input['title'],'user'=>$input['user'],'imgfile'=>'/photo/'.$newName,'keyword'=>$input['keyword'],'introduction'=>$input['introduction'],'content'=>$input['introduction'],'watch'=>0]);
+            $create=Article::create(['cid'=>$input['cid'],'title'=>$input['title'],'user'=>$input['user'],'imgfile'=>'/photo/'.$newName,
+                'keyword1'=>$input['keyword1'], 'keyword2'=>$input['keyword2'], 'keyword3'=>$input['keyword3'], 'keyword4'=>$input['keyword4'], 'keyword5'=>$input['keyword5'],
+                'introduction'=>$input['introduction'],'content'=>$input['introduction'],'watch'=>0]);
             if($create)
             {
                 return redirect('/admin/articles');
@@ -49,6 +51,10 @@ class ArticleController extends Controller
         }else{
             return back()->withErrors('图片不存在或者上传失败!');
         }
+
+    }
+    public function show()
+    {
 
     }
 

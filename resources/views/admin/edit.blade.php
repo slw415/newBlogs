@@ -28,7 +28,7 @@
                 <a class="nav-link " href="{{url('/admin')}}">首页</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="{{url('/edit')}}">修改当前后台用户</a>
+                <a class="nav-link disabled" href="{{url('/admin/edit')}}">修改当前后台用户</a>
             </li>
         </ul>
         @if (\Illuminate\Support\Facades\Session::has('message'))

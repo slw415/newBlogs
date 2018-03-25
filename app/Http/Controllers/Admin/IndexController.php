@@ -125,10 +125,9 @@ class IndexController extends Controller
             $newName=$admin->saveFile($imgfile);
             $create=Admin::where('id',$id)->update(array_merge($input,['imgfile'=>'/photo/'.$newName]));
             $id=Admin::where('name',$input['name'])->select('id')->first();
-            $db=DB::table('admin_role')->where('admin_id',$id)->update(['role_id'=>$role_id,'admin_id'=>$id['id']]);
             if($create)
             {
-                $request->session()->flash('message', '[ 缓存更新成功！]');
+                $request->session()->flash('message', '[ 更新成功！]');
                 return redirect('/admin/edit');
             }
         }else{
@@ -137,7 +136,7 @@ class IndexController extends Controller
             $db=DB::table('admin_role')->where('admin_id',$id)->update(['role_id'=>$role_id,'admin_id'=>$id['id']]);
             if($create)
             {
-                $request->session()->flash('message', '[ 缓存更新成功！]');
+                $request->session()->flash('message', '[ 更新成功！]');
                 return redirect('/admin/edit');
             }
         }
