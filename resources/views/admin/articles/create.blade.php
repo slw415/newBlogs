@@ -121,6 +121,7 @@
         <input type="checkbox" name="like[read]" title="阅读">
         </div>
         </div>*/
+
     $("#addSite").click(function () {
         layer.open({
             title: '添加标签',
@@ -171,10 +172,16 @@
                      $('input[name="key1"]:checked').each(function() {
                          formData.push($(this).val());
                      })
+               var demo=$('#demo')
                 console.log(formData);
+                     //删除原有标签元素
+                     if(demo)
+                     {
+                         demo.remove();
+                     }
                     if (formData) {
                         $('#addSite').after(
-                            '<div class="form-group">'+
+                            '<div class="form-group" id="demo">'+
                             '<input id="key1"type="text" name="keyword1"size="4"  readonly="true"style="display: none;"/> '+
                             '<input id="key2"type="text" name="keyword2"size="4"  readonly="true"style="display: none;"/> '+
                             '<input id="key3"type="text" name="keyword3"size="4"  readonly="true"style="display: none;"/> '+

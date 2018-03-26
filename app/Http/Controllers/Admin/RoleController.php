@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\RoleRequest;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class RoleController extends Controller
         return view('admin.roles.create',compact('img'));
     }
     //post保存创建的角色
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
         $input=$request->except('_token');
         $create=Role::create(['name'=>$input['name'],'title'=>$input['title']]);
@@ -53,7 +54,7 @@ class RoleController extends Controller
         return view('admin.roles.edit',compact('role','img'));
     }
     //更新角色
-    public function update(Request $request,$id)
+    public function update(RoleRequest $request,$id)
     {
         $input=$request->except('_token','_method');
         $update=Role::where('id',$id)->update(['name'=>$input['name'],'title'=>$input['title']]);

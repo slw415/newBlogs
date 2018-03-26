@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CheckBirthday;
 use App\Rules\CheckMobile;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Validator;
@@ -30,7 +31,7 @@ class LoginPostRequest extends FormRequest
                'name' => 'required|alpha_num|max:6',
                 'password' => 'required|alpha_num|min:6',
                 'mobile'=> ['required',new CheckMobile],
-                'birthday' => 'required|date|before:today'
+                'birthday' => ['required',new CheckBirthday]
         ];
     }
     public function messages()
@@ -43,10 +44,7 @@ class LoginPostRequest extends FormRequest
                 'password.alpha_num'=>'密码必须是字母或数字',
                 'password.max:6'=>'密码最少为6位',
                 'mobile.required'=>'手机号必须填写',
-                'mobile.mobile'=>'手机号不符合',
                 'birthday.required'=>'生日必须填写',
-                'birthday.date'=>'生日必须填写规范',
-                'birthday.before:today'=>'生日必须今天之前',
             ];
     }
 }

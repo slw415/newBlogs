@@ -17,7 +17,11 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('introduction');
-            $table->string('keyword');
+            $table->string('keyword1');
+            $table->string('keyword2');
+            $table->string('keyword3');
+            $table->string('keyword4');
+            $table->string('keyword5');
             $table->string('user');
             $table->string('imgfile');
             $table->text('content');

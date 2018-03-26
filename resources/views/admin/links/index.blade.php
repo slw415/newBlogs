@@ -55,7 +55,7 @@
                     <td>{{$v->name}}</td>
                     <td>{{$v->created_at}}</td>
                     <td>{{$v->updated_at}}</td>
-                    <td><span><a class="btn btn-small btn-primary" href="{{url('/admin/links/'.$v->id.'/edit')}}"><i class="icon-edit"></i>修改</a></span>&nbsp;<span><a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a></span></td>
+                    <td><span><a class="btn btn-small btn-primary" href="{{url('/admin/articles/'.$v->id.'/edit')}}"><i class="icon-edit"></i>修改</a></span>&nbsp;<span><a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a></span></td>
                 </tr>
             @endforeach
         @else
@@ -65,7 +65,11 @@
     </table>
 
     </div>
-        {!! $list->links() !!}
+        <div id="pull_right">
+            <div class="pull-right">
+                {!! $list->links() !!}
+            </div>
+        </div>
     </div>
 @endsection
 

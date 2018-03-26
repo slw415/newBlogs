@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\LinkRequest;
+use App\Http\Requests\LoginPostRequest;
 use App\Model\Link;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,7 +33,7 @@ class LinkController extends Controller
         $img=Auth::user();
         return view('admin.links.create',compact('img'));
     }
-    public function store(Request $request)
+    public function store(LinkRequest $request)
     {
         $input=$request->except('_token');
         $create=Link::create(['name'=>$input['name'],'url'=>$input['url']]);
@@ -47,7 +49,7 @@ class LinkController extends Controller
         $links=Link::where('id',$id)->first()->toArray();
         return view('admin.links.edit',compact('img','links','id'));
     }
-    public function update(Request $request,$id)
+    public function update(LinkRequest $request,$id)
     {
         $input=$request->except('_token','_method');
         $update=Link::where('id',$id)->update(['name'=>$input['name'],'url'=>$input['url']]);

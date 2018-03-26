@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin;
+use App\Http\Requests\EditPostRequest;
 use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,7 +36,7 @@ class ListController extends Controller
         $rl_id=DB::table('admin_role')->where('admin_id',$id)->select('role_id')->first();
         return view('admin.list.edit',compact('img','data','role','rl_id','id'));
     }
-    public function update(Request $request,$id)
+    public function update(EditPostRequest $request,$id)
     {
 
         $input=$request->except('_token','_method','role_id','img');

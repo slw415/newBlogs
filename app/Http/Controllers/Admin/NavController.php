@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\NavRequest;
 use App\Model\Nav;
 use Illuminate\Filesystem\Cache;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class NavController extends Controller
         $nav=Nav::where('pid',0)->get();
         return view('admin.navs.create',compact('img','nav'));
     }
-    public function store(Request $request)
+    public function store(NavRequest $request)
     {
         $input=$request->except('_token');
 
@@ -40,7 +41,7 @@ class NavController extends Controller
         $links=Nav::where('id',$id)->first()->toArray();
         return view('admin.navs.edit',compact('img','links','id'));
     }
-    public function update(Request $request,$id)
+    public function update(NavRequest $request,$id)
     {
         $input=$request->except('_token','_method');
         $update=Nav::where('id',$id)->update(['name'=>$input['name'],'title'=>$input['title']]);

@@ -1,0 +1,30 @@
+﻿@charset "utf-8";
+body, div {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background:#F2F2F2;
+    FONT-SIZE: 13px; FONT-FAMILY: "微软雅黑","Microsoft YaHei", "宋体";
+}
+
+#main{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width:416px;
+    height:336px;
+    margin-left:-208px;
+    margin-top:-168px;
+}
+#main #ya{
+    background: url("/images/ya.png") no-repeat;width:416px; height: 116px;
+}
+#main #info{
+    background: #fff;width:416px; height: 220px;
+}
+#main #info p{color: #646464; font-size: 13px; padding-left: 50px; padding-top: 10px; margin: 0;}
+#main #info .title{ color: #1F9793; padding-top: 30px; padding-left: 32px}
+#main #info .tel{ color: #FF7F00; padding-top: 16px;}
+#main #info .nav{ padding-top: 20px}
+#main #info .nav a{cursor:pointer; width: 116px; background: #2AC2C0; height: 36px; display: block; line-height: 36px; color: #fff; text-decoration: none; text-align: center; margin-right: 30px; float: left}

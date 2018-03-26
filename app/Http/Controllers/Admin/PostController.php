@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Http\Requests\LoginPostRequest;
+use App\Http\Requests\PermissionsRequest;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class PostController extends Controller
         return view('admin.permissions.create',compact('img'));
     }
     //post保存创建的权限
-    public function store(Request $request)
+    public function store(PermissionsRequest $request)
     {
         $input=$request->except('_token');
         $create=Permission::create(['name'=>$input['name'],'title'=>$input['title']]);
@@ -59,7 +60,7 @@ class PostController extends Controller
         return view('admin.permissions.edit',compact('permission','img'));
     }
     //更新权限
-    public function update(Request $request,$id)
+    public function update(PermissionsRequest $request,$id)
     {
         $input=$request->except('_token','_method');
         $update=Permission::where('id',$id)->update(['name'=>$input['name'],'title'=>$input['title']]);

@@ -33,8 +33,8 @@
                 <p>{{$os}}</p>
             </div>
             <div class="col-md-3 ml-2 border border-info w-25 p-3 text-primary" >
-                <h4>当前浏览器：</h4>
-                <p>{{$br}}</p>
+                <h4>PHP运行方式：</h4>
+                <p>{{ php_sapi_name()}}</p>
             </div>
         </div>
         <div class="row">

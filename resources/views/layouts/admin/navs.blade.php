@@ -9,7 +9,6 @@
             <ul class="dropdown-menu"style="background: #2a2730;color: #f5f5f5">
                 <li class="nav-item" id="logout"><a class="nav-link" href="{{url('/admin/edit')}}"style="color: #dddddd"> 修改个人信息 </a></li>
                 <li class="nav-item" id="logout"><a class="nav-link" href="{{url('/admin/logout')}}"style="color: #dddddd"> 退出 </a></li>
-
             </ul>
         </div>
         <ul class="navbar-nav" id="headerNav">

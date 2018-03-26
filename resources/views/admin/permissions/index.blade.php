@@ -66,8 +66,13 @@
         </tbody>
     </table>
     </div>
+        <div id="pull_right">
+            <div class="pull-right">
+                {!! $admins->links() !!}
+            </div>
+        </div>
     </div>
-    {!! $admins->links() !!}
+
 @endsection
 
 @section('js')

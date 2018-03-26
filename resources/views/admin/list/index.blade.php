@@ -72,6 +72,11 @@
         </tbody>
     </table>
     </div>
+        <div id="pull_right">
+            <div class="pull-right">
+                {!! $list->links() !!}
+            </div>
+        </div>
     </div>
 @endsection
 

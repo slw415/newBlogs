@@ -30,6 +30,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>分类</th>
             <th>标题</th>
             <th>作者</th>
             <th>简介</th>
@@ -44,6 +45,7 @@
             @foreach($list as $v)
                 <tr id="list{{$v->id}}">
                     <td>{{$v->id}}</td>
+                    <td>{{$v->nav->name}}</td>
                     <td class="ps1">{{str_limit($v->title, $limit = 5, $end = '...')}}</td>
                     <td class="ps2">{{str_limit($v->user, $limit = 5, $end = '...')}}</td>
                     <td class="ps3">{{str_limit($v->introduction, $limit = 5, $end = '...')}}</td>
@@ -60,7 +62,12 @@
     </table>
 
     </div>
-        {!! $list->links() !!}
+        <div id="pull_right">
+            <div class="pull-right">
+                {!! $list->links() !!}
+            </div>
+        </div>
+
     </div>
 @endsection
 
@@ -86,11 +93,12 @@
             layer.confirm('您确定要删除这条记录？', {
                 btn: ['确定', '取消'] //按钮
             }, function () {
-                $.post('{{ url('/admin/links/'.$v->id) }}', {
+                $.post('{{ url('/admin/articles/'.$v->id) }}', {
                     '_method': 'delete',
                     '_token': "{{ csrf_token() }}",
                     'id': "{{ $v->id }}"
                 }, function (data) {
+                    location.reload();
                     if (data.status == 0) {
                         layer.msg(data.msg, {icon: 6, time: 1500});
                     } else {
