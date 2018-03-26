@@ -5,11 +5,16 @@
     <title>@yield('title')</title>
     <meta name="keywords" content="个人博客,施力炜个人博客" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}">
     <link href="{{asset('css/home/base.css')}}" rel="stylesheet">
     <link href="{{asset('css/home/index.css')}}" rel="stylesheet">
     <script src="{{asset('js/home/modernizr.js')}}"></script>
 </head>
 <body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script>
     window.onload = function ()
     {
