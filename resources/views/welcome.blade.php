@@ -47,7 +47,7 @@
             <div class="aboutme">
                 <h2 class="ab_title">关于我</h2>
                 @if(count($user)>0)
-                    <div class="avatar"><img src="{{$user->imgfile}}" /></div>
+                    <div class="avatar"><img src="{{isset($user->imgfile)?'images/b04.jpg':$user->imgfile}}" /></div>
                 @else
                 <div class="avatar"><img src="images/b04.jpg" /></div>
                 @endif

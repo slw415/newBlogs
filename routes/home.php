@@ -18,3 +18,6 @@ Route::get('/cache','IndexController@cache');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth:users'], function () {
+    Route::get('/edit','IndexController@edit');
+});

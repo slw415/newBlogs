@@ -108,5 +108,6 @@
 @yield('content')
 </article>
 @include('layouts.home.footer')
+@yield('js')
 </body>
 </html>

@@ -59,6 +59,11 @@ class IndexController extends Controller
         return view('welcome',compact('new','watch','programming','recommend','links','navs','user'));
 
     }
+    public function edit()
+    {
+        $navs=Nav::where('pid',0)->get();
+        return view('home.edit',compact('navs'));
+    }
         //清理前台缓存
         public function cache()
         {
