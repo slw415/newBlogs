@@ -76,15 +76,16 @@
                 </div>
 
                 <div class="form-group">
+
                <span class="btn btn-success fileinput-button">
-                <span>上传图片</span>
+                <span>上传缩略图</span>&nbsp;宽度(300-550)
                 <input type="file" id="file" name="imgfile" >
                 </span>
                     <img src="{{asset($art->imgfile)}}"width="100" height="100" id="imgfile">
                     <input type="hidden"value="{{$art->imgfile}}"name="img"/>
                     <img id="previewImage" width="100" height="100" style="visibility:hidden">
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <span>文章内容</span>
                 @include('vendor.ueditor.assets')
             <!-- 实例化编辑器 -->

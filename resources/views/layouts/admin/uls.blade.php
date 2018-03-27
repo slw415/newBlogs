@@ -1,5 +1,7 @@
 
-
+        <dl class="list-group " >
+                <dt class="black list-group-item item1"><a href="{{url('/cache')}}"><i class="icon-repeat"></i>清理前台缓存</a></dt>
+        </dl>
         <dl class="list-group " >
             <dt class="black list-group-item item1"><a href="{{url('/admin')}}"><i class="icon-home"></i> Home</a></dt>
         </dl>

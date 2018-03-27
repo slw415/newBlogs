@@ -57,13 +57,15 @@
                     <input type="text" class="form-control" id="introduction" name="introduction"placeholder="请输入简介">
                 </div>
                 <div class="form-group">
+
                <span class="btn btn-success fileinput-button">
-                <span>上传缩略图</span>
+                <span>上传缩略图</span>&nbsp;宽度(300-550)
                 <input type="file" id="file" name="imgfile">
+
                 </span>
                     <img id="previewImage" width="100" height="100" style="visibility:hidden">
                 </div>
-                <div class="form-group">
+                <div class="form-group mt-2">
                     <span>文章内容</span>
                 @include('vendor.ueditor.assets')
             <!-- 实例化编辑器 -->
@@ -145,6 +147,8 @@
             '<input type="checkbox" name="key1" title="服务器"value="服务器">服务器' +
             '<input type="checkbox" name="key1" title="手机"value="手机">手机' +
             '<input type="checkbox" name="key1" title="git"value="git">git' +
+            '<input type="checkbox" name="key1" title="休闲"value="休闲">休闲' +
+            '<input type="checkbox" name="key1" title="扯淡"value="扯淡">扯淡' +
             '</div></div>' ,
 
             btnAlign: 'c',

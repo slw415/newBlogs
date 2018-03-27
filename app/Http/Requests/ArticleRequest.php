@@ -27,6 +27,7 @@ class ArticleRequest extends FormRequest
             'title' => 'required',
             'user' => 'required',
             'introduction'=>'required',
+            'imgfile'=>'dimensions:min_width=300,max_width=600',
             'content'=>'required',
         ];
 
@@ -37,6 +38,7 @@ class ArticleRequest extends FormRequest
             'title.required'=>'标题必填',
             'user.required'=>'作者必填',
             'introduction.required'=>'简介必填',
+            'imgfile.dimensions'=>'图片宽度必须大于300小于550',
             'content.required'=>'内容必填'
 
         ];

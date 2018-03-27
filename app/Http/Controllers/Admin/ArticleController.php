@@ -19,7 +19,7 @@ class ArticleController extends Controller
     {
         $input = $request->input('input');
         $img = Auth::user();
-        $list = Article::where('title', 'like', '%' . $input . '%')->paginate(10);
+        $list = Article::where('title', 'like', '%' . $input . '%')->orderBy('updated_at', 'desc')->paginate(10);
         return View::make('admin.articles.index', compact('img', 'list', 'input'));
     }
 
@@ -103,6 +103,20 @@ class ArticleController extends Controller
         }
         return response()->json(['status' => $status, 'msg' => $msg]);
     }
-
+    //推荐文章
+    public function recommend(Request $request)
+    {
+        $input = $request->except( '_token');
+        $update= Article::where('id',$input['id'])->update(['recommend'=>1]);
+        if($update)
+        {
+            $status = '0';
+            $msg = "推荐成功！";
+        }else{
+            $status = '1';
+            $msg = "推荐失败！";
+        }
+        return response()->json(['status' => $status, 'msg' => $msg]);
+    }
 
 }

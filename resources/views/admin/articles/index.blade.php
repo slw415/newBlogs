@@ -52,7 +52,10 @@
                     <td><img src="{{$v->imgfile}}"width="50px"height="50px"/></td>
                     <th>{{$v->watch}}</th>
                     <td>{{$v->updated_at}}</td>
-                    <td><span><a class="btn btn-small btn-primary" href="{{url('/admin/articles/'.$v->id.'/edit')}}"><i class="icon-edit"></i>修改</a></span>&nbsp;<span><a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a></span></td>
+                    <td><span><a class="btn btn-small btn-primary" href="{{url('/admin/articles/'.$v->id.'/edit')}}"><i class="icon-edit"></i>修改</a></span>&nbsp;
+                        <span><a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a></span>
+                        <span><a class="recommend btn btn-small btn-success" href="#"><i class="icon-edit"></i>推荐</a></span>
+                    </td>
                 </tr>
             @endforeach
         @else
@@ -90,11 +93,28 @@
             });
         });
         $('#list{{$v->id}}').find('td .del').click(function () {
-            layer.confirm('您确定要删除这条记录？', {
+            layer.confirm('您确定要删除这篇文章？', {
                 btn: ['确定', '取消'] //按钮
             }, function () {
                 $.post('{{ url('/admin/articles/'.$v->id) }}', {
                     '_method': 'delete',
+                    '_token': "{{ csrf_token() }}",
+                    'id': "{{ $v->id }}"
+                }, function (data) {
+                    location.reload();
+                    if (data.status == 0) {
+                        layer.msg(data.msg, {icon: 6, time: 1500});
+                    } else {
+                        layer.msg(data.msg, {icon: 5, time: 1500});
+                    }
+                })
+            })
+        })
+        $('#list{{$v->id}}').find('td .recommend').click(function () {
+            layer.confirm('您确定要推荐这篇文章？', {
+                btn: ['确定', '取消'] //按钮
+            }, function () {
+                $.post('{{ url('/admin/articles/new/recommend') }}', {
                     '_token': "{{ csrf_token() }}",
                     'id': "{{ $v->id }}"
                 }, function (data) {

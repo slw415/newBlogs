@@ -27,6 +27,7 @@ class CreateArticlesTable extends Migration
             $table->text('content');
             $table->integer('watch');
             $table->integer('cid');
+            $table->integer('recommend');
             $table->timestamps();
         });
     }

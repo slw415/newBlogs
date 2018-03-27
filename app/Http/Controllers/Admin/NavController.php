@@ -27,8 +27,7 @@ class NavController extends Controller
     public function store(NavRequest $request)
     {
         $input=$request->except('_token');
-
-        $create=Nav::create(['name'=>$input['name'],'title'=>$input['title'],'pid'=>$input['pid']]);
+        $create=Nav::create(['name'=>$input['name'],'title'=>$input['title'],'pid'=>$input['cid']]);
         if ($create) {
             return redirect('admin/navs');
         } else {

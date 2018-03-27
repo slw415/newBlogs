@@ -47,6 +47,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::resource('/navs','NavController');
             //文章管理
             Route::resource('/articles','ArticleController');
+            //文章推荐
+           Route::post('/articles/new/recommend','ArticleController@recommend');
 
     });
 

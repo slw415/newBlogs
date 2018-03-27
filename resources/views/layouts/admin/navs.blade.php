@@ -12,7 +12,7 @@
             </ul>
         </div>
         <ul class="navbar-nav" id="headerNav">
-            <li class="nav-item" id="navMainPage"><a class="nav-link" href="#"> 前台首页 </a></li>
+            <li class="nav-item" id="navMainPage"><a class="nav-link" href="{{url('/')}}"target="_blank"> 前台首页 </a></li>
 
             {{--   <li class="nav-item" id="navTechPage"><a class="nav-link" href="#"> 技术 </a></li>
                <li class="nav-item" id="navFoodPage"><a class="nav-link" href="#"> 摄影 </a></li>

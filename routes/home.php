@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','IndexController@index');
+//更新用户权限列表缓存
+Route::get('/cache','IndexController@cache');
 
 Auth::routes();
 
