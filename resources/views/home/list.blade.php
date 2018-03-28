@@ -5,7 +5,7 @@
 @section("content")
     <div class="leftbox">
         <div class="newblogs">
-            <h2 class="hometitle"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。</span>学无止境</h2>
+            <h2 class="hometitle"><span>{{$nav->title}}</span>{{$nav->name}}</h2>
             <ul>
 
                 <li>

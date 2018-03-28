@@ -8,9 +8,10 @@ use App\Http\Controllers\Controller;
 
 class ListController extends Controller
 {
-    public function index()
+    public function index($id)
     {
         $navs=Nav::where('pid',0)->get();
-        return view('home.list',compact('navs'));
+        $nav=Nav::where('id',$id)->get();
+        return view('home.list',compact('navs','nav'));
     }
 }
