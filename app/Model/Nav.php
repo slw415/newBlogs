@@ -28,4 +28,13 @@ class Nav extends Model
          return $arr;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * 获取对应的文章
+     */
+    public function articles()
+    {
+        return $this->hasMany(Article::class,'cid','id');
+    }
 }
+

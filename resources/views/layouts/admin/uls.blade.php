@@ -5,7 +5,6 @@
         <dl class="list-group " >
             <dt class="black list-group-item item1"><a href="{{url('/admin')}}"><i class="icon-home"></i> Home</a></dt>
         </dl>
-
         @can('Home-Mangent')
         <dl  class="list-group ">
                 <dt class="black list-group-item item2"><a href="#"><i class="icon-coffee"></i> 前台用户管理</a></dt>
@@ -33,7 +32,7 @@
                 <dd class=" gray list-group-item "><a href="{{url('/admin/navs')}}"><i class=" icon-bookmark"></i>导航栏管理</a></dd>
         </dl>
         @endcan
-        @can('Article-management')
+        @can('Article-Mangment')
         <dl  class="list-group ">
                 <dt class="black list-group-item item2"><a href="#"><i class=" icon-pencil"></i> 文章管理</a></dt>
                 <dd class=" gray list-group-item "><a href="{{url('/admin/articles')}}"><i class="icon-pencil"></i>文章管理</a></dd>

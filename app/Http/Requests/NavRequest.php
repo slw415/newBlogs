@@ -25,7 +25,7 @@ class NavRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'title' => 'required',
+            'title' => 'required|between:15,20',
         ];
 
     }
@@ -33,7 +33,8 @@ class NavRequest extends FormRequest
     {
         return [
             'name.required'=>'导航栏名必填',
-            'title.required'=>'导航栏英文名必填',
+            'title.required'=>'导航栏文言必填',
+            'title.max'=>'导航栏文言字数10到15之间'
         ];
     }
 }
