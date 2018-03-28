@@ -11,7 +11,7 @@ class ListController extends Controller
     public function index($id)
     {
         $navs=Nav::where('pid',0)->get();
-        $nav=Nav::where('id',$id)->get();
+        $nav=Nav::where('id',$id)->first();
         return view('home.list',compact('navs','nav'));
     }
 }
