@@ -52,8 +52,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
-
+/*    'url' => env('APP_URL', 'http://localhost:8000')*/
+    'url' => 'http://localhost:8000',
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

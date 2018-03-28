@@ -30,11 +30,11 @@
             <form action="{{url('/admin/links')}}" method="post">
                 {{csrf_field()}}
                 <div class="form-group">
-                    <label for="url">友情地址</label>
+                    <label for="url">友情地址<span class="asterisk">*</span></label>
                     <input type="text" class="form-control"name="url" id="url" placeholder="输入友情地址">
                 </div>
                 <div class="form-group">
-                    <label for="name">友情站点</label>
+                    <label for="name">友情站点<span class="asterisk">*</span></label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="输入友情站点">
                 </div>
                 <button type="submit" class="btn btn-primary">提交</button>

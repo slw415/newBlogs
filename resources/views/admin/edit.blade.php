@@ -39,18 +39,18 @@
         <form role="form" method="post"action="{{url('/admin/update')}}" enctype="multipart/form-data" id="formData">
             {{csrf_field()}}
             <div class="form-group">
-                <label for="name">名称</label>
+                <label for="name">名称<span class="asterisk">*</span></label>
                 <input type="text" class="form-control" id="name" placeholder="请输入名称"name="name" value="{{$data['name']}}">
             </div>
             <div class="form-group">
-                <label for="mobile">手机号</label>
+                <label for="mobile">手机号<span class="asterisk">*</span></label>
                 <input type="text" class="form-control" id="mobile" name='mobile'placeholder="请输入手机号"value="{{$data['mobile']}}">
             </div>
             <div class="form-group">
-                <label for="birthday">生日(例：1995-09-25)</label>
+                <label for="birthday">生日(例：1995-09-25)<span class="asterisk">*</span></label>
                 <input type="text" class="form-control" id="birthday" name="birthday"placeholder="请输入生日"value="{{$data['birthday']}}">
             </div>
-            <div class="form-group">
+            <div class="form-group"><span class="asterisk">*</span>
                <span class="btn btn-success fileinput-button">
                 <span>上传图片</span>
                 <input type="file" id="file" name="imgfile" >
@@ -60,7 +60,7 @@
                 <img id="previewImage" width="100" height="100" style="visibility:hidden">
             </div>
             　　 <div class="form-group">
-                <label for="name">选择角色</label>
+                <label for="name">选择角色<span class="asterisk">*</span></label>
                 <select class="form-control"name="role_id"id="role_id">
                     @foreach($role as $v)
                         <option value="{{$v['id']}}">{{$v['title']}}</option>

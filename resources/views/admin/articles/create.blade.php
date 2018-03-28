@@ -38,26 +38,26 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="title">标题</label>
+                    <label for="title">标题<span class="asterisk">*</span></label>
                     <input type="text" class="form-control" id="title" placeholder="请输入标题"name="title">
                 </div>
                 <div class="form-group">
-                    <label for="user">作者</label>
+                    <label for="user">作者<span class="asterisk">*</span></label>
                     <input type="text" class="form-control" id="user" placeholder="请输入作者"name="user">
                 </div>
            {{--     <div class="form-group">
                     <label for="keyword">标签</label>
                     <input type="text" class="form-control" id="keyword" name='keyword'placeholder="请输入标签">
                 </div>--}}
-                <div class="form-group"id="addSite">
+                <div class="form-group"id="addSite"><span class="asterisk">*</span>
                 <span ><a class="btn btn-small btn-primary" href="#"><i class=" icon-heart"></i>添加标签</a></span>
                 </div>
                 <div class="form-group">
-                    <label for="introduction">简介</label>
+                    <label for="introduction">简介<span class="asterisk">*</span></label>
                     <input type="text" class="form-control" id="introduction" name="introduction"placeholder="请输入简介">
                 </div>
                 <div class="form-group">
-
+                    <span class="asterisk">*</span>
                <span class="btn btn-success fileinput-button">
                 <span>上传缩略图</span>&nbsp;宽度(300-550)
                 <input type="file" id="file" name="imgfile">
@@ -66,7 +66,7 @@
                     <img id="previewImage" width="100" height="100" style="visibility:hidden">
                 </div>
                 <div class="form-group mt-2">
-                    <span>文章内容</span>
+                    <span>文章内容<span class="asterisk">*</span></span>
                 @include('vendor.ueditor.assets')
             <!-- 实例化编辑器 -->
                 <script type="text/javascript">

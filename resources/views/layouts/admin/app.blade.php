@@ -117,7 +117,7 @@
         .clear{
             clear: both;
         }
-
+        .asterisk{color: #ff0000;width:10px; font-size:20px;float: left; margin-top:4px; height: 30px;}
     </style>
     @yield('css')
 </head>

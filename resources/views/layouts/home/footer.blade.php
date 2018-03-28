@@ -1,3 +1,3 @@
 <footer>
-    <p>Design by <a href="http://www.yangqq.com">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+    <p>Design by <a href="www.slwcnbk.cn">施帅帅个人博客</a> <a href="/">浙ICP备17057634号-1</a></p>
 </footer>

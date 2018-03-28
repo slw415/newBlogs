@@ -20,10 +20,10 @@
             <a class="nav-link " href="{{asset('/admin')}}">首页</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="{{url('/admin/navs')}}">友情链接</a>
+            <a class="nav-link disabled" href="{{url('/admin/navs')}}">导航列表</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="{{url('/admin/navs/'. $links['id'].'/edit')}}">友情链接修改</a>
+            <a class="nav-link disabled" href="{{url('/admin/navs/'. $links['id'].'/edit')}}">导航栏修改</a>
         </li>
     </ul>
         <div class="container"style="margin-top: 20px">
@@ -31,12 +31,12 @@
                 {{csrf_field()}}
                 <input type="hidden" name="_method" value="PATCH">
                 <div class="form-group">
-                    <label for="name">导航栏名字</label>
+                    <label for="name">导航栏名字<span class="asterisk">*</span></label>
                     <input type="text" class="form-control"name="name" id="name" placeholder="输入导航栏名字"value="{{$links['name']}}">
                 </div>
                 <div class="form-group">
-                    <label for="title">导航栏英文名字</label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="输入导航栏英文名字"value="{{$links['title']}}">
+                    <label for="title">导航名言<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="输入导航名言"value="{{$links['title']}}">
                 </div>
                 <button type="submit" class="btn btn-primary">提交</button>
             </form>

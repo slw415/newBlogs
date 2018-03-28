@@ -19,5 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth:users'], function () {
+    //修改个人信息
     Route::get('/edit','IndexController@edit');
+    Route::post('/update','IndexController@update');
 });
+//导航页
+Route::get('/list/{id}', 'ListController@index');

@@ -31,11 +31,11 @@
                 {{csrf_field()}}
                 <input type="hidden" name="_method" value="PATCH">
                 <div class="form-group">
-                    <label for="name">权限名</label>
+                    <label for="name">权限名<span class="asterisk">*</span></label>
                     <input type="text" class="form-control"name="name" id="name" placeholder="输入权限名"value="{{$role['name']}}">
                 </div>
                 <div class="form-group">
-                    <label for="title">权限备注</label>
+                    <label for="title">权限备注<span class="asterisk">*</span></label>
                     <input type="text" class="form-control" name="title" id="title" placeholder="输入权限备注"value="{{$role['title']}}">
                 </div>
                 <button type="submit" class="btn btn-primary">提交</button>

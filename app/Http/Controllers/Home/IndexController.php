@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Admin;
+use App\Http\Requests\HomeEditRequest;
 use App\Model\Article;
 
 use App\Model\Link;
 use App\Model\Nav;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -62,7 +65,38 @@ class IndexController extends Controller
     public function edit()
     {
         $navs=Nav::where('pid',0)->get();
-        return view('home.edit',compact('navs'));
+        $user=Auth::guard('users')->user();
+        return view('home.edit',compact('navs','user'));
+    }
+
+    public function update(HomeEditRequest $request)
+    {
+
+        $input=$request->except('_token','img');
+        $id=Auth::guard('users')->user()->id;
+        $imgfile=$request->file('imgfile');
+        $img=$request->input('img');
+        //判断这个文件是否存在和判断文件上传过程中是否出错
+        if($request->hasFile('imgfile')&& $imgfile->isValid())
+        {
+            $admin=new Admin();
+            $newName=$admin->saveFile($imgfile);
+            $create=User::where('id',$id)->update(array_merge($input,['imgfile'=>'/photo/'.$newName]));
+            if($create)
+            {
+                $request->session()->flash('message', '[ 更新信息成功！]');
+                return redirect('/edit');
+            }
+        }else{
+            $create=User::where('id',$id)->update(array_merge($input,['imgfile'=>$img]));
+            if($create)
+            {
+                $request->session()->flash('message', '[ 更新信息成功！]');
+                return redirect('/edit');
+
+            }
+        }
+
     }
         //清理前台缓存
         public function cache()

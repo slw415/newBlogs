@@ -20,10 +20,10 @@
             <a class="nav-link " href="{{asset('/admin')}}">首页</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="{{url('/admin/navs')}}">友情链接列表</a>
+            <a class="nav-link disabled" href="{{url('/admin/navs')}}">导航列表</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="{{url('/admin/navs/create')}}">创建友情链接</a>
+            <a class="nav-link disabled" href="{{url('/admin/navs/create')}}">创建导航链接</a>
         </li>
     </ul>
         <div class="container">
@@ -41,12 +41,12 @@
                     </select>
                     </div>
                 <div class="form-group">
-                    <label for="name">导航栏名字</label>
+                    <label for="name">导航栏名字<span class="asterisk">*</span></label>
                     <input type="text" class="form-control"name="name" id="name" placeholder="输入导航栏名字">
                 </div>
                 <div class="form-group">
-                    <label for="title">导航栏英文名字</label>
-                    <input type="text" class="form-control" name="title" id="title" placeholder="导航栏英文名字">
+                    <label for="title">导航名言<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="导航名言">
                 </div>
                 <button type="submit" class="btn btn-primary">提交</button>
             </form>

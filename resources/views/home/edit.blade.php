@@ -23,45 +23,47 @@
         margin-left: auto;
         margin-right: auto;
     }
+    .asterisk{color: #ff0000;width:10px; font-size:20px;float: left; margin-top:4px; height: 30px;}
 </style>
 @section('content')
     <div class="col-md-6 col-center-block ">
+        @if (\Illuminate\Support\Facades\Session::has('message'))
+            <div class="alert alert-success ml-3"id="message">
+                {{\Illuminate\Support\Facades\Session::get('message')}}
+            </div>
+        @endif
     <div class="container mt-3">
         <div >
-            <form role="form"method="post"action="#" enctype="multipart/form-data"id="formData">
+            <form role="form"method="post"action="{{url('/update')}}" enctype="multipart/form-data"id="formData">
                 {{csrf_field()}}
                 <div class="form-group">
-                    <label for="name">名称</label>
-                    <input type="text" class="form-control " id="name" placeholder="请输入名称"name="name" value="">
+                    <label for="name">名称<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control " id="name" placeholder="请输入名称"name="name" value="{{$user->name}}">
                 </div>
                 <div class="form-group">
-                    <label for="email">邮件</label>
-                    <input type="text" class="form-control" id="mobile" name='email'placeholder="请输入email"value="">
+                    <label for="email">邮箱<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control" id="email" name='email'placeholder="请输入email"value="{{$user->email}}">
                 </div>
                 <div class="form-group">
-                    <label for="website">网站</label>
-                    <input type="text" class="form-control" id="website" name='website'placeholder="请输入网站"value="">
+                    <label for="website">个人网站</label>
+                    <input type="text" class="form-control" id="website" name='website'placeholder="请输入网站"value="{{$user->website}}">
                 </div>
                 <div class="form-group">
-                    <label for="mobile">手机号</label>
-                    <input type="text" class="form-control" id="mobile" name='mobile'placeholder="请输入手机号"value="">
-                </div>
-                <div class="form-group">
-                    <label for="birthday">生日(例：1995-09-25)</label>
-                    <input type="text" class="form-control" id="birthday" name="birthday"placeholder="请输入生日"value="">
+                    <label for="birthday">生日(例：1995-09-25)<span class="asterisk">*</span></label>
+                    <input type="text" class="form-control" id="birthday" name="birthday"placeholder="请输入生日"value="{{$user->birthday}}">
                 </div>
                 <div class="form-group">
                <span class="btn btn-success fileinput-button">
                 <span>上传图片</span>
                 <input type="file" id="file" name="imgfile" >
                 </span>
-                    <img src=""width="100" height="100" id="imgfile"style="display: inline">
-                    <input type="hidden"value=""name="img"/>
+                    <img src="{{!empty($user->imgfile)?$user->imgfile:'images/b04.jpg'}}"width="100" height="100" id="imgfile"style="display: inline">
+                    <input type="hidden"name="img"value="{{!empty($user->imgfile)?$user->imgfile:'images/b04.jpg'}}"/>
                     <img id="previewImage" width="100" height="100" style="visibility:hidden;display: inline">
                 </div>
                 <div class="form-group">
                     <label for="job">职业</label>
-                    <input type="text" class="form-control" id="mobile" name='mobile'placeholder="职业"value="">
+                    <input type="text" class="form-control" id="job" name='job'placeholder="职业"value="{{$user->job}}">
                 </div>
                 <button type="submit" class="btn  btn-default">提交</button>
             </form>

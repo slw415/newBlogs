@@ -47,17 +47,21 @@
             <div class="aboutme">
                 <h2 class="ab_title">关于我</h2>
                 @if(count($user)>0)
-                    <div class="avatar"><img src="{{isset($user->imgfile)?'images/b04.jpg':$user->imgfile}}" /></div>
+                    <div class="avatar"><img src="{{empty($user->imgfile)?'images/b04.jpg':$user->imgfile}}" /></div>
                 @else
                 <div class="avatar"><img src="images/b04.jpg" /></div>
                 @endif
                 <div class="ab_con">
                     @if(count($user)>0)
                     <p>网名：{{$user->name}} </p>
-                  {{--  <p>职业：Web前端设计师、网页设计 </p>
-                    <p>个人微信：yangqq_1987</p>--}}
+                    @if($user->job)
+                            <p>职业：{{$user->job}} </p>
+                        @endif
+                     @if($user->website)
+                    <p>个人网站：{{$user->website}}</p>
+                        @endif
                     <p>邮箱：{{$user->email}}</p>
-                        <p style="text-align: center"><a class="btn btn-small btn-success" href="#">
+                        <p style="text-align: center"><a class="btn btn-small btn-success" href="{{url('/edit')}}">
                                 <i class=" icon-heart"></i>&nbsp;修改资料</a></p>
                         @else
                         <p style="text-align: center">您还未登录，请先登录</p>

@@ -30,11 +30,11 @@
             <form action="{{url('/admin/permissions')}}" method="post">
                 {{csrf_field()}}
                 <div class="form-group">
-                    <label for="name">权限名</label>
+                    <label for="name">权限名<span class="asterisk">*</span></label>
                     <input type="text" class="form-control"name="name" id="name" placeholder="输入权限名">
                 </div>
                 <div class="form-group">
-                    <label for="title">权限备注</label>
+                    <label for="title">权限备注<span class="asterisk">*</span></label>
                     <input type="text" class="form-control" name="title" id="title" placeholder="输入权限备注">
                 </div>
                 <button type="submit" class="btn btn-primary">提交</button>

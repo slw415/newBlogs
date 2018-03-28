@@ -30,7 +30,7 @@
         <tr>
             <th>ID</th>
             <th>导航名字</th>
-            <th>英文导航名字</th>
+            <th>导航名言</th>
             <th>更新时间</th>
             <th>操作</th>
         </tr>
@@ -43,7 +43,7 @@
                 <tr id="list{{$v['con']['id']}}">
                     <td>{{$v['con']['id']}}</td>
                     <td>{{$v['con']['name']}}</td>
-                    <td>{{$v['con']['title']}}</td>
+                    <td class="ps1">{{str_limit($v['con']['title'], $limit = 10, $end = '...')}}</td>
                     <td>{{$v['con']['created_at']}}</td>
                     <td>{{$v['con']['updated_at']}}</td>
                     <td><a class="btn btn-small btn-primary" href="{{url('/admin/navs/'.$v['con']['id'].'/edit')}}"><i class="icon-edit"></i>修改</a>
@@ -55,7 +55,7 @@
                         <tr id="list{{$v1['con']['id']}}">
                             <td>{{$v1['con']['id']}}</td>
                             <td>|-&nbsp;{{$v1['con']['name']}}</td>
-                            <td>{{$v1['con']['title']}}</td>
+                            <td class="ps1">{{str_limit($v1['con']['title'], $limit = 10, $end = '...')}}</td>
                             <td>{{$v1['con']['created_at']}}</td>
                             <td>{{$v1['con']['updated_at']}}</td>
                             <td><a class="btn btn-small btn-primary" href="{{url('/admin/navs/'.$v1['con']['id'].'/edit')}}"><i class="icon-edit"></i>修改</a>
@@ -80,6 +80,11 @@
 @section('js')
     <script>
         @foreach($list as $v)
+        $("#list{{$v['con']['id']}}").find('.ps1').mouseover(function () {
+            layer.tips("{{$v['con']['title']}}",$("#list{{$v['con']['id']}}").find('.ps1'), {
+                tips: [4, '#78BA32']
+            });
+        });
         $('#list{{$v['con']['id']}}').find('td .del').click(function () {
             layer.confirm('您确定要删除这条记录？', {
                 btn: ['确定', '取消'] //按钮
@@ -101,6 +106,11 @@
         })
         @if(count($v['son'])>0)
             @foreach($v['son'] as $v1)
+        $("#list{{$v1['con']['id']}}").find('.ps1').mouseover(function () {
+            layer.tips("{{$v1['con']['title']}}",$("#list{{$v1['con']['id']}}").find('.ps1'), {
+                tips: [4, '#78BA32']
+            });
+        });
         $('#list{{$v1['con']['id']}}').find('td .del').click(function () {
             layer.confirm('您确定要删除这条记录？', {
                 btn: ['确定', '取消'] //按钮
