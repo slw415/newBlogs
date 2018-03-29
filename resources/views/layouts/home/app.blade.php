@@ -10,6 +10,7 @@
     <link href="{{asset('css/home/base.css')}}" rel="stylesheet">
     <link href="{{asset('css/home/index.css')}}" rel="stylesheet">
     <script src="{{asset('js/home/modernizr.js')}}"></script>
+    <link href="{{ asset('/layouts/css/layer.css') }}">
     <style>
         #pull_right{
             text-align:center;
@@ -84,12 +85,13 @@
             clear: both;
         }
     </style>
+    @yield('css')
 </head>
 <body>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-
+<script src="{{asset('/layouts/layui.js')}}"></script>
 <script>
     window.onload = function ()
     {

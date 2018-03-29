@@ -36,16 +36,39 @@
         <div class="news_pl">
             <h2>文章评论</h2>
             <ul>
-                <div class="gbko">
-                    <!--高速版-->
-                    <div id="SOHUCS" sid="809" ></div>
-                    <script charset="utf-8" type="text/javascript" src="js/changyan.js" ></script>
-                    <script type="text/javascript">
-                        window.changyan.api.config({
-                            appid: 'cyt6UkrdY',
-                            conf: 'prod_37667ae67efaadf448cac07713d3165a'
-                        });
-                    </script>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="blog-post">
+                            ss
+                            </div>
+                            <hr />
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object img-circle" src="{{asset('images/b04.jpg')}}" alt="64x64" style="width: 64px; height: 64px;">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">ssssssssss</h4>
+                                            ssssssssssssssssssssssssssssssssss
+                                    </div>
+                                </div>
+                            <hr/>
+                            <div class="media">
+                                <div class="media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="{{asset('images/b04.jpg')}}" alt="64x64" style="width: 64px; height: 64px;">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">ssssssssss</h4>
+                                    ssssssssssssssssssssssssssssssssss
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </ul>
         </div>

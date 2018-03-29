@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Model\Comment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    // 关联到comment
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
