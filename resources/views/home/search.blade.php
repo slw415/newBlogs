@@ -1,20 +1,20 @@
 @extends('layouts.home.app')
 
-@section('title',$nav->name)
+@section('title','搜索页')
 
 @section("content")
     <div class="leftbox">
         <div class="newblogs">
-            <h2 class="hometitle"><span>{{$nav->title}}</span>{{$nav->name}}</h2>
+         {{--  <h2 class="hometitle"><span>{{$nav->title}}</span>{{$nav->name}}</h2>--}}
             <ul>
                 @if(count($list)>0)
                 @foreach($list as $v)
                 <li>
-                    <h3 class="blogtitle"><a href="{{url('/article/'.$v->id)}}" target="_blank" >{{$v->title}}</a></h3>
-                    <div class="bloginfo"><span class="blogpic"><a href="{{url('/article/'.$v->id)}}" title="{{$v->title}}"><img src="{{$v->imgfile}}" alt="{{$v->title}}" /></a></span>
+                    <h3 class="blogtitle"><a href="/jstt/css3/2018-03-25/811.html" target="_blank" >{{$v->title}}</a></h3>
+                    <div class="bloginfo"><span class="blogpic"><a href="/jstt/css3/2018-03-25/811.html" title="{{$v->title}}"><img src="{{$v->imgfile}}" alt="{{$v->title}}" /></a></span>
                         <p>{{$v->introduction}}</p>
                     </div>
-                    <div class="autor"><span class="lm f_l"><a href="{{url('list/'.$v->nav->id)}}" title="{{$v->nav->name}}" target="_blank"  class="classname">{{$v->nav->name}}</a></span><span class="dtime f_l">{{substr($v->updated_at, 0, 10)}}</span><span class="viewnum f_l">浏览（<a href="/">{{$v->watch}}</a>）</span><span class="f_r"><a href="{{url('/article/'.$v->id)}}" class="more">阅读原文>></a></span></div>
+                    <div class="autor"><span class="lm f_l"><a href="/jstt/css3/" title="css3" target="_blank"  class="classname">{{$v->nav->name}}</a></span><span class="dtime f_l">{{substr($v->updated_at, 0, 10)}}</span><span class="viewnum f_l">浏览（<a href="/">{{$v->watch}}</a>）</span><span class="f_r"><a href="/jstt/css3/2018-03-25/811.html" class="more">阅读原文>></a></span></div>
                 </li>
                 @endforeach
                 @else
@@ -42,7 +42,7 @@
             <h2 class="ab_title"><a href="/">本栏推荐</a></h2>
             <ul>
                 @foreach($recommend as $v)
-                <li><b><a href="{{url('/article/'.$v->id)}}" target="_blank">{{$v->title}}</a></b>
+                <li><b><a href="/jstt/css3/2018-03-20/808.html" target="_blank">{{$v->title}}</a></b>
                     <p>{{str_limit($v->introduction, $limit = 30, $end = '...')}}</p>
                 </li>
                 @endforeach
@@ -53,7 +53,7 @@
             <h2 class="ab_title"><a href="/">点击排行</a></h2>
             <ul>
                 @foreach($watch as $v)
-                <li><b><a href="{{url('/article/'.$v->id)}}" target="_blank">{{$v->title}}</a></b>
+                <li><b><a href="/jstt/bj/2015-01-09/740.html" target="_blank">{{$v->title}}</a></b>
                     <p>{{str_limit($v->introduction, $limit = 30, $end = '...')}}</p>
                 </li>
                 @endforeach
@@ -63,7 +63,7 @@
         <div class="weixin">
             <h2 class="ab_title">个人微信</h2>
             <ul>
-                <img src="{{asset('picture/wx.png')}}"/>
+                <img src="{{asset('picture/wx.png')}}">
             </ul>
         </div>
     </div>

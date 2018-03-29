@@ -55,7 +55,7 @@ class IndexController extends Controller
         //友情链接
         $links=Link::all();
         //导航栏
-        $navs=Nav::where('pid',0)->get();
+        $navs=Nav::where('pid',0)->orderBy('created_at','asc')->get();
         //当前用户
         $user=Auth::guard('users')->user();
 
@@ -64,7 +64,7 @@ class IndexController extends Controller
     }
     public function edit()
     {
-        $navs=Nav::where('pid',0)->get();
+        $navs=Nav::where('pid',0)->orderBy('created_at','asc')->get();
         $user=Auth::guard('users')->user();
         return view('home.edit',compact('navs','user'));
     }

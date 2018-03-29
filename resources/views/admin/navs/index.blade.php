@@ -44,7 +44,6 @@
                     <td>{{$v['con']['id']}}</td>
                     <td>{{$v['con']['name']}}</td>
                     <td class="ps1">{{str_limit($v['con']['title'], $limit = 10, $end = '...')}}</td>
-                    <td>{{$v['con']['created_at']}}</td>
                     <td>{{$v['con']['updated_at']}}</td>
                     <td><a class="btn btn-small btn-primary" href="{{url('/admin/navs/'.$v['con']['id'].'/edit')}}"><i class="icon-edit"></i>修改</a>
                         <a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a>
@@ -56,7 +55,6 @@
                             <td>{{$v1['con']['id']}}</td>
                             <td>|-&nbsp;{{$v1['con']['name']}}</td>
                             <td class="ps1">{{str_limit($v1['con']['title'], $limit = 10, $end = '...')}}</td>
-                            <td>{{$v1['con']['created_at']}}</td>
                             <td>{{$v1['con']['updated_at']}}</td>
                             <td><a class="btn btn-small btn-primary" href="{{url('/admin/navs/'.$v1['con']['id'].'/edit')}}"><i class="icon-edit"></i>修改</a>
                                 <a class="del btn btn-small btn-danger" href="#"><i class="icon-trash icon-large"></i>删除</a>

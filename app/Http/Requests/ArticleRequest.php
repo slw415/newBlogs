@@ -26,7 +26,7 @@ class ArticleRequest extends FormRequest
         return [
             'title' => 'required',
             'user' => 'required',
-            'introduction'=>'required',
+            'introduction'=>'required|min:20',
             'imgfile'=>'dimensions:min_width=300,max_width=600',
             'content'=>'required',
         ];
@@ -38,6 +38,7 @@ class ArticleRequest extends FormRequest
             'title.required'=>'标题必填',
             'user.required'=>'作者必填',
             'introduction.required'=>'简介必填',
+            'introduction.min'=>'简介最少20个字',
             'imgfile.dimensions'=>'图片宽度必须大于300小于550',
             'content.required'=>'内容必填'
 

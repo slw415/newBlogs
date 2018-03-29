@@ -36,5 +36,10 @@ class Nav extends Model
     {
         return $this->hasMany(Article::class,'cid','id');
     }
+
+    public function nav()
+    {
+        return $this->belongsTo(Nav::class,'pid','id');
+    }
 }
 

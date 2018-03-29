@@ -41,10 +41,10 @@ h3.blogtitle { line-height: 30px; height: 30px; margin: 10px 0; }
 .autor span { margin: 0 10px 0 0; padding-left: 20px }
 .autor span a { color: #096; }
 .autor span a:hover { text-decoration: underline }
-.lm { background: url(../images/newsbg01.png) no-repeat left center }
-.dtime { background: url(../images/newsbg02.png) no-repeat left center }
-.viewnum { background: url(../images/newsbg04.png) no-repeat left center }
-.pingl { background: url(../images/newsbg03.png) no-repeat left center }
+.lm { background: url(../../images/newsbg01.png) no-repeat left center }
+.dtime { background: url(../../images/newsbg02.png) no-repeat left center }
+.viewnum { background: url(../../images/newsbg04.png) no-repeat left center }
+.pingl { background: url(../../images/newsbg03.png) no-repeat left center }
 .blogpic img { width: 100% }
 .bloginfo p { color: #888; line-height: 24px }
 .more { font-size: 14px; }
@@ -94,8 +94,8 @@ h3.blogtitle { line-height: 30px; height: 30px; margin: 10px 0; }
 .news_title { font-size: 24px; font-weight: normal; padding: 20px 0; color: #333; }
 .news_author { width: 100%; color: #999; line-height: 18px; }
 .news_author span { margin-right: 10px; padding-left: 20px }
-.au01 { background: url(../images/author2.png) no-repeat left center }
-.au02 { background: url(../images/date.png) no-repeat left center }
+.au01 { background: url(../../images/author2.png) no-repeat left center }
+.au02 { background: url(../../images/date.png) no-repeat left center }
 .au03 b { color: #333; padding: 0 5px }
 .au04 { font-weight: normal; }
 .news_about { color: #888888; border: 1px solid #F3F3F3; padding: 10px; margin: 20px auto 15px auto; line-height: 23px; background: none repeat 0 0 #F6F6F6; }
@@ -113,13 +113,13 @@ h3.blogtitle { line-height: 30px; height: 30px; margin: 10px 0; }
 .nextinfo a:hover { color: #000; text-decoration: underline }
 /*�������*/
 .otherlink, .xzsm, .ffsm { width: 100%; background: #FFF; border-radius: 10px; overflow: hidden; margin: 20px 0 }
-.otherlink h2 { border-bottom: #000 2px solid; line-height: 40px; font-size: 14px; background: url(../images/5794.png) left 10px center no-repeat; padding-left: 40px; color: #000 }
+.otherlink h2 { border-bottom: #000 2px solid; line-height: 40px; font-size: 14px; background: url(../../images/5794.png) left 10px center no-repeat; padding-left: 40px; color: #000 }
 .otherlink ul { margin: 10px 0 }
 .otherlink li { line-height: 24px; height: 24px; display: block; width: 290px; float: left; overflow: hidden; margin-right: 30px; padding-left: 10px; }
 .otherlink li a:hover { text-decoration: underline; color: #000 }
 /*��������*/
 .news_pl { margin: 10px 0; width: 100%; background: #FFF; border-radius: 10px; overflow: hidden; margin: 20px 0 }
-.news_pl h2 { background: url(../images/newsbg03.png) no-repeat left 10px center; border-bottom: #000 2px solid; line-height: 40px; font-size: 14px; padding-left: 30px; color: #000 }
+.news_pl h2 { background: url(../../images/newsbg03.png) no-repeat left 10px center; border-bottom: #000 2px solid; line-height: 40px; font-size: 14px; padding-left: 30px; color: #000 }
 .xzsm ul, .ffsm ul { padding: 20px; line-height: 24px; border-top: 6px solid #a6b5c5; }
 .bt-blue { display: block; line-height: 40px; height: 40px; background: #1e8ec5; width: 100px; text-align: center; }
 .bt-blue a { color: #fff }
@@ -144,7 +144,7 @@ h3.blogtitle { line-height: 30px; height: 30px; margin: 10px 0; }
 header, article, footer { width: 100%; margin: auto; overflow: hidden }
 nav ul { width: 100% }
 nav ul li { display: none; }
-#mnav { display: block; z-index: 99999; background: url(../images/logo.png) no-repeat left 10px top 13px #333; }
+#mnav { display: block; z-index: 99999; background: url(../../images/logo.png) no-repeat left 10px top 13px #333; }
 .pics { margin-top: 40px; }
 .pics ul li:nth-child(2) { margin: 10px 10px; }
 .tuijian li, .tuijianmb li { width: 25% }
@@ -157,7 +157,7 @@ nav ul li { display: none; }
 header, article, footer { width: 100%; margin: auto; overflow: hidden }
 nav ul { width: 100% }
 nav ul li { display: none; }
-#mnav { display: block; z-index: 99999; background: url(../images/logo.png) no-repeat left 10px top 13px #333; }
+#mnav { display: block; z-index: 99999; background: url(../../images/logo.png) no-repeat left 10px top 13px #333; }
 .pics ul li { width: 94%; margin-bottom: 10px; margin-left: 10px; background: #fff }
 .pics ul li:nth-child(1) { float: none }
 .pics ul li:nth-child(2) { margin: 0 0 10px 10px }

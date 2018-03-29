@@ -13,4 +13,5 @@ class Article extends Model
     {
         return $this->belongsTo(Nav::class,'cid','id');
     }
+
 }

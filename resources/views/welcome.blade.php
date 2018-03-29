@@ -18,7 +18,7 @@
                 @foreach($programming as $v)
                     <li>
                         <div class="tpic"><img src="{{$v->imgfile}}"></div>
-                        <b>{{$v->title}}</b><span>{{str_limit($v->introduction, $limit = 30, $end = '...')}}</span><a href="/download/div/2018-03-18/807.html" target="_blank"  class="readmore">阅读</a>
+                        <b>{{$v->title}}</b><span>{{str_limit($v->introduction, $limit = 30, $end = '...')}}</span><a href="{{url('/article/'.$v->id)}}" target="_blank"  class="readmore">阅读</a>
                     </li>
                 @endforeach
                 </ul>
@@ -28,11 +28,11 @@
                 <ul>
                     @foreach($new as $v)
                         <li>
-                            <h3 class="blogtitle"><a href="/jstt/css3/2018-03-25/811.html" target="_blank" >{{$v->title}}</a></h3>
-                            <div class="bloginfo"><span class="blogpic"><a href="/jstt/css3/2018-03-25/811.html" title="{{$v->title}}"><img src="{{$v->imgfile}}" alt="{{$v->title}}" /></a></span>
+                            <h3 class="blogtitle"><a href="{{url('/article/'.$v->id)}}" target="_blank" >{{$v->title}}</a></h3>
+                            <div class="bloginfo"><span class="blogpic"><a href="{{url('/article/'.$v->id)}}" title="{{$v->title}}"><img src="{{$v->imgfile}}" alt="{{$v->title}}" /></a></span>
                                 <p>{{str_limit($v->introduction, $limit = 30, $end = '...')}}</p>
                             </div>
-                            <div class="autor"><span class="lm f_l"><a href="/jstt/css3/" title="css3" target="_blank"  class="classname">{{$v->nav->name}}</a></span><span class="dtime f_l">2018-03-25</span><span class="viewnum f_l">浏览（<a href="/">{{$v->watch}}</a>）</span><span class="f_r"><a href="/jstt/css3/2018-03-25/811.html" class="more">阅读原文>></a></span></div>
+                            <div class="autor"><span class="lm f_l"><a href="{{url('list/'.$v->nav->id)}}" title="{{$v->nav->name}}" target="_blank"  class="classname">{{$v->nav->name}}</a></span><span class="dtime f_l">{{substr($v->updated_at, 0, 10)}}</span><span class="viewnum f_l">浏览（<a href="/">{{$v->watch}}</a>）</span><span class="f_r"><a href="{{url('/article/'.$v->id)}}" class="more">阅读原文>></a></span></div>
                         </li>
                     @endforeach
                         <div id="pull_right">
@@ -49,7 +49,7 @@
                 @if(count($user)>0)
                     <div class="avatar"><img src="{{empty($user->imgfile)?'images/b04.jpg':$user->imgfile}}" /></div>
                 @else
-                <div class="avatar"><img src="images/b04.jpg" /></div>
+                <div class="avatar"><img src="{{asset('images/b04.jpg')}}" /></div>
                 @endif
                 <div class="ab_con">
                     @if(count($user)>0)
@@ -72,8 +72,8 @@
                 </div>
             </div>
             <div class="search">
-                <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-                    <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
+                <form action="{{'/search'}}" method="get" name="searchform" id="searchform">
+                    <input name="keyboard" id="keyboard" class="input_text" placeholder="请输入文章标题" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text"value="{{isset($input)?$input:''}}">
                     <input name="show" value="title" type="hidden">
                     <input name="tempid" value="1" type="hidden">
                     <input name="tbname" value="news" type="hidden">
@@ -84,23 +84,23 @@
                 <h2 class="ab_title"><a href="#">点击排行</a></h2>
                 <ul>
                     @foreach($watch as $v)
-                    <li><b><a href="/download/div/2015-04-10/746.html" target="_blank">{{$v->title}}</a></b>
+                    <li><b><a href="{{url('/article/'.$v->id)}}" target="_blank">{{$v->title}}</a></b>
                         <p>{{str_limit($v->introduction, $limit = 30, $end = '...')}}</p>
                     </li>
                         @endforeach
                 </ul>
-                <div class="ad"><img src="picture/ad300x100.jpg"></div>
+                <div class="ad"><img src="{{asset('picture/ad300x100.jpg')}}"></div>
             </div>
             <div class="paihang">
                 <h2 class="ab_title"><a href="/">站长推荐</a></h2>
                 <ul>
                     @foreach($recommend as $v)
-                    <li><b><a href="/jstt/css3/2018-03-20/808.html" target="_blank">{{$v->title}}</a></b>
+                    <li><b><a href="{{url('/article/'.$v->id)}}" target="_blank">{{$v->title}}</a></b>
                         <p>{{str_limit($v->introduction, $limit = 30, $end = '...')}}</p>
                     </li>
                     @endforeach
                 </ul>
-                <div class="ad"><img src="picture/ad01.jpg"></div>
+                <div class="ad"><img src="{{asset('picture/ad01.jpg')}}"></div>
             </div>
             <div class="links">
                 <h2 class="ab_title">友情链接</h2>
@@ -111,9 +111,9 @@
                 </ul>
             </div>
             <div class="weixin">
-                <h2 class="ab_title">官方微信</h2>
+                <h2 class="ab_title">个人微信</h2>
                 <ul>
-                    <img src="picture/wx.jpg">
+                    <img src="{{asset('picture/wx.png')}}">
                 </ul>
             </div>
         </div>

@@ -27,6 +27,7 @@
         <thead>
         <tr>
             <th>ID</th>
+            <th>IP</th>
             <th>姓名</th>
             <th>邮箱</th>
             <th>工作</th>
@@ -42,6 +43,7 @@
             @foreach($list as $v)
                 <tr id="list{{$v->id}}">
                     <td>{{$v->id}}</td>
+                    <td>{{$v->ip}}</td>
                     <td>{{$v->name}}</td>
                     <td>{{$v->email}}</td>
                     <td>{{$v->job}}</td>

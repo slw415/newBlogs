@@ -25,3 +25,7 @@ Route::group(['middleware' => 'auth:users'], function () {
 });
 //导航页
 Route::get('/list/{id}', 'ListController@index');
+//搜索
+Route::get('/search', 'ListController@search');
+//文章显示
+Route::get('/article/{id}', 'ListController@article');
