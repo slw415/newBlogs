@@ -20,6 +20,7 @@ class CreateCommentsTable extends Migration
             // user_id 属于哪个用户
             $table->integer('user_id')->unsigned();
             // article_id属于哪篇文章
+            $table->integer('pid')->defind(0);
             $table->integer('article_id')->unsigned();
             // 声明user_id外键
             $table->foreign('user_id')

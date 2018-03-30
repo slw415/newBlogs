@@ -144,7 +144,7 @@ h3.blogtitle { line-height: 30px; height: 30px; margin: 10px 0; }
 header, article, footer { width: 100%; margin: auto; overflow: hidden }
 nav ul { width: 100% }
 nav ul li { display: none; }
-#mnav { display: block; z-index: 99999; background: url(../../images/logo.png) no-repeat left 10px top 13px #333; }
+#mnav { display: block; z-index: 99999; background:  no-repeat left 10px top 13px #333; }
 .pics { margin-top: 40px; }
 .pics ul li:nth-child(2) { margin: 10px 10px; }
 .tuijian li, .tuijianmb li { width: 25% }
@@ -157,7 +157,7 @@ nav ul li { display: none; }
 header, article, footer { width: 100%; margin: auto; overflow: hidden }
 nav ul { width: 100% }
 nav ul li { display: none; }
-#mnav { display: block; z-index: 99999; background: url(../../images/logo.png) no-repeat left 10px top 13px #333; }
+#mnav { display: block; z-index: 99999; background:  no-repeat left 10px top 13px #333; }
 .pics ul li { width: 94%; margin-bottom: 10px; margin-left: 10px; background: #fff }
 .pics ul li:nth-child(1) { float: none }
 .pics ul li:nth-child(2) { margin: 0 0 10px 10px }

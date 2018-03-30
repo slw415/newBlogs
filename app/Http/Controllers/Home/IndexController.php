@@ -107,4 +107,9 @@ class IndexController extends Controller
             Cache::forget('recommend');
             return redirect('/admin');
         }
+        public function out()
+        {
+            Auth::guard('users')->logout();
+            return redirect('/');
+        }
 }

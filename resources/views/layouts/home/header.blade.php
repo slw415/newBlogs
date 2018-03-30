@@ -15,6 +15,7 @@
             @foreach($navs as $v)
             <li><a href={{url('/list/'.$v->id)}}>{{$v->name}}</a></li>
             @endforeach
+            <li><a href="{{url('/user/out')}}">退出</a></li>
         </ul>
     </nav>
 </header>

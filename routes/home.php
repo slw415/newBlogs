@@ -16,6 +16,8 @@ Route::get('/','IndexController@index');
 Route::get('/cache','IndexController@cache');
 
 Auth::routes();
+//退出
+Route::get('/user/out','IndexController@out');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth:users'], function () {
@@ -29,3 +31,5 @@ Route::get('/list/{id}', 'ListController@index');
 Route::get('/search', 'ListController@search');
 //文章显示
 Route::get('/article/{id}', 'ListController@article');
+//ajax提交评论
+Route::post('/comment','ListController@comment');

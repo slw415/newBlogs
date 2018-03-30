@@ -67,6 +67,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'ip'=>$_SERVER["REMOTE_ADDR"],
+            'imgfile'=>'/images/b04.jpg',
             'password' => bcrypt($data['password']),
 
         ]);

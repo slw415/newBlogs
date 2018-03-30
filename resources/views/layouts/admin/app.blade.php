@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}">
     <link href="{{ asset('/layer/mobile/need/layer.css') }}">
-    <link href="{{ asset('/layouts/css/layer.css') }}">
+    <link href="{{ asset('/layouts/css/layui.css') }}"rel="stylesheet">
     <style>
         body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
         a{

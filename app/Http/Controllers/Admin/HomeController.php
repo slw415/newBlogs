@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function destroy(Request $request)
     {
         $input = $request->except('_method', '_token');
+
         $del=User::where('id',$input['id'])->delete();
         if ($del)
         {

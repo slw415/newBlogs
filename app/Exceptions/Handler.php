@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -59,5 +60,14 @@ class Handler extends ExceptionHandler
             return $request->expectsJson() ? response()->json(['msg'=>'用户未登录'], 401) : redirect()->guest(url('admin/login'));
         }
         return $request->expectsJson() ? response()->json(['msg'=>'用户未登录'], 401) : redirect()->guest(route('login'));
+    }
+//json返回错误信息
+   protected function invalidJson($request, ValidationException $exception)
+    {
+        return response()->json([
+           'msg' => $exception->validator->errors()->first(),
+            'status' => '1',
+           'data' => []
+       ]);
     }
 }

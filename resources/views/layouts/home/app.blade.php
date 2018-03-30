@@ -10,7 +10,7 @@
     <link href="{{asset('css/home/base.css')}}" rel="stylesheet">
     <link href="{{asset('css/home/index.css')}}" rel="stylesheet">
     <script src="{{asset('js/home/modernizr.js')}}"></script>
-    <link href="{{ asset('/layouts/css/layer.css') }}">
+    <link href="{{ asset('/layouts/css/layui.css') }}" rel="stylesheet">
     <style>
         #pull_right{
             text-align:center;
