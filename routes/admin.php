@@ -51,7 +51,10 @@ Route::group(['prefix' => 'admin'], function () {
            Route::post('/articles/new/recommend','ArticleController@recommend');
            //前台个人管理
            Route::resource('/home','HomeController');
-
+           //评论管理
+           Route::resource('/message','MessageController');
+           //留言管理
+            Route::resource('/words','WordsController');
     });
 
 });

@@ -53,7 +53,9 @@
                                     <div class="media-body">
                                         <h4 class="media-heading">{{$v['con']['user']['name']}}&nbsp;<span style="font-size: 10px;">{{substr($v['con']['created_at'], 0, 10)}}</span></h4>
                                         <div class="mt-2">{!!$v['con']['body']!!}</div>
+                                        @if(\Illuminate\Support\Facades\Auth::guard('users')->user()->id<>$v['con']['user_id'])
                                         <div class="mt-2 pull-right"><span class="layui-btn layui-btn-radius layui-btn-sm "id="replay{{$v['con']['id']}}">回复</span></div>
+                                        @endif
                                     </div>
                                 </div>
                             <hr/>
