@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/"><span class="text-warning">SLW</span>菜鸟博客后台</a>
+    <a class="navbar-brand" href="#"><span class="text-warning">SLW</span>菜鸟博客后台</a>
     <span class="col-md-2"style="color: #dddddd;font-size: 10px">很高兴见到你</span>
     <!-- 这个 div 加上 justify-content-end 样式即可 -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">

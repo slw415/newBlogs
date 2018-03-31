@@ -6,6 +6,7 @@ use App\Http\Requests\CommentRequest;
 use App\Model\Article;
 use App\Model\Comment;
 use App\Model\Nav;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -64,6 +65,14 @@ class ListController extends Controller
             $arr = Comment::whereHas('article', function ($query) use ($id) {
                 $query->where('id', $id);
             })->with('article', 'user')->get()->toArray();
+        foreach ($arr as &$item) {
+            $c = Carbon::parse($item['created_at']);
+            if ($c->greaterThan(now()->subDay(3))) {
+                $item['created_at_show'] = $c->diffForHumans();
+            } else {
+                $item['created_at_show'] = $c->toDateString();
+            }
+            }
             $comment = $this->getTree($arr);
 
         return view('home.article',compact('navs','nav','article','prev','next','relevant','recommend','watch','comment'));

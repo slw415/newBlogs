@@ -51,10 +51,12 @@
                                         </a>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="media-heading">{{$v['con']['user']['name']}}&nbsp;<span style="font-size: 10px;">{{substr($v['con']['created_at'], 0, 10)}}</span></h4>
+                                        <h4 class="media-heading"><span class=" text-info">{{$v['con']['user']['name']}}&nbsp;</span><span style="font-size: 10px;">{{$v['con']['created_at_show']}}</span></h4>
                                         <div class="mt-2">{!!$v['con']['body']!!}</div>
-                                        @if(\Illuminate\Support\Facades\Auth::guard('users')->user()->id<>$v['con']['user_id'])
+                                        @if(auth()->check() && auth()->guard('users')->user()->id != $v['con']['user_id'])
                                         <div class="mt-2 pull-right"><span class="layui-btn layui-btn-radius layui-btn-sm "id="replay{{$v['con']['id']}}">回复</span></div>
+                                        @elseif(!auth()->check())
+                                            <div class="mt-2 pull-right"><span class="layui-btn layui-btn-radius layui-btn-sm "id="red{{$v['con']['id']}}">回复</span></div>
                                         @endif
                                     </div>
                                 </div>
@@ -68,7 +70,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">{{$v1['con']['user']['name']}}&nbsp;<span style="font-size: 10px;">{{substr($v1['con']['created_at'], 0, 10)}}</span></h4>
+                                                    <h4 class="media-heading"><span class=" text-info">{{$v1['con']['user']['name']}}</span>@ <span class=" text-primary">{{$v['con']['user']['name']}}</span>&nbsp;<span style="font-size: 10px;">{{$v['con']['created_at_show']}}</span></h4>
                                                     <div class="mt-2">{!!$v1['con']['body']!!}</div>
                                                 </div>
                                             </div>
@@ -139,7 +141,21 @@
                                             @endif
                                         })
                                     });
+
                                     @foreach($comment as $v)
+                                    $('#red{{$v['con']['id']}}').one('click',function () {
+                                        layer.open({
+                                            content: '您还未登陆！无法评论',
+                                            btn: ['童鞋go', '取消'],
+                                            yes: function (index, layero) {
+                                                window.location.href = '/login';
+                                            },
+                                            cancel: function () {
+                                                //右上角关闭回调
+
+                                            }
+                                        });
+                                    })
                                     $('#replay{{$v['con']['id']}}').one('click',function () {
                                         $('#replay{{$v['con']['id']}}').parent().parent().parent().after(
                                             '<textarea id="index"name="body" style="display: none;"class="mt-6"></textarea> '+

@@ -33,3 +33,6 @@ Route::get('/search', 'ListController@search');
 Route::get('/article/{id}', 'ListController@article');
 //ajax提交评论
 Route::post('/comment','ListController@comment');
+//留言板
+Route::get('/message','MessageController@index');
+Route::post('/message','MessageController@message');

@@ -139,6 +139,9 @@
             '<input type="checkbox" name="key1" title="Js"value="Js">Js' +
             '<input type="checkbox" name="key1" title="Css"value="Css">Css' +
             '<input type="checkbox" name="key1" title="Html5"value="Html5">Html5' +
+            '<input type="checkbox" name="key1" title="Js"value="微信小程序">微信小程序' +
+            '<input type="checkbox" name="key1" title="Css"value="数据库">数据库' +
+            '<input type="checkbox" name="key1" title="Html5"value="微信公众号">微信公众号' +
             '</div></div>' +
             '<div class="layui-form-item ">' +
             '<div class="layui-inline">' +
@@ -149,7 +152,20 @@
             '<input type="checkbox" name="key1" title="git"value="git">git' +
             '<input type="checkbox" name="key1" title="休闲"value="休闲">休闲' +
             '<input type="checkbox" name="key1" title="扯淡"value="扯淡">扯淡' +
-            '</div></div>' ,
+            '<input type="checkbox" name="key1" title="扯淡"value="吐槽">吐槽' +
+            '</div></div>' +
+            '<div class="layui-form-item ">' +
+            '<div class="layui-inline">' +
+            '<label class="layui-form-label">影视</label>' +
+            '<input type="checkbox" name="key1" title="爱情"value="爱情">爱情' +
+            '<input type="checkbox" name="key1" title="恐怖"value="恐怖">恐怖' +
+            '<input type="checkbox" name="key1" title="热门"value="热门">热门' +
+            '<input type="checkbox" name="key1" title="喜剧"value="喜剧">喜剧' +
+            '<input type="checkbox" name="key1" title="美国"value="美国">美国' +
+            '<input type="checkbox" name="key1" title="日本"value="日本">日本' +
+            '<input type="checkbox" name="key1" title="韩国"value="扯淡">韩国' +
+            '</div></div>',
+
 
             btnAlign: 'c',
             btn: ['确定', '取消'],

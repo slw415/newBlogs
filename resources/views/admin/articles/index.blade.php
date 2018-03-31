@@ -78,12 +78,12 @@
     <script>
         @foreach($list as $v)
         $("#list{{$v->id}}").find('.ps1').mouseover(function () {
-            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->introduction)) !!}",$("#list{{$v->id}}").find('.ps1'), {
+            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->title)) !!}",$("#list{{$v->id}}").find('.ps1'), {
                 tips: [4, '#78BA32']
             });
         });
         $("#list{{$v->id}}").find('.ps2').mouseover(function () {
-            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->introduction)) !!}",$("#list{{$v->id}}").find('.ps2'), {
+            layer.tips("{!! str_replace(array("\r", "\n"), array('', '\n'), addslashes($v->user)) !!}",$("#list{{$v->id}}").find('.ps2'), {
                 tips: [4, '#78BA32']
             });
         });

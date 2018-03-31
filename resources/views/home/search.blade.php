@@ -5,7 +5,7 @@
 @section("content")
     <div class="leftbox">
         <div class="newblogs">
-         {{--  <h2 class="hometitle"><span>{{$nav->title}}</span>{{$nav->name}}</h2>--}}
+          <h2 class="hometitle"><span>搜索页</span>心灵不在它生活的地方，但在它所爱的地方。</h2>
             <ul>
                 @if(count($list)>0)
                 @foreach($list as $v)

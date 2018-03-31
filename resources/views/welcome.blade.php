@@ -7,7 +7,7 @@
         <div class="pics">
             <ul>
                 @foreach($watch as $v)
-                <li><a href="#" target="_blank"><img src="{{$v->imgfile}}"></a><span> {{str_limit($v->title, $limit = 15, $end = '...')}}</span></li>
+                <li><a href="#" target="_blank"><img src="{{$v->imgfile}}"></a><span> {{str_limit($v->title, $limit = 40, $end = '...')}}</span></li>
                 @endforeach
             </ul>
         </div>
@@ -30,7 +30,7 @@
                         <li>
                             <h3 class="blogtitle"><a href="{{url('/article/'.$v->id)}}" target="_blank" >{{$v->title}}</a></h3>
                             <div class="bloginfo"><span class="blogpic"><a href="{{url('/article/'.$v->id)}}" title="{{$v->title}}"><img src="{{$v->imgfile}}" alt="{{$v->title}}" /></a></span>
-                                <p>{{str_limit($v->introduction, $limit = 30, $end = '...')}}</p>
+                                <p>{{str_limit($v->introduction, $limit = 200 ,$end = '...')}}</p>
                             </div>
                             <div class="autor"><span class="lm f_l"><a href="{{url('list/'.$v->nav->id)}}" title="{{$v->nav->name}}" target="_blank"  class="classname">{{$v->nav->name}}</a></span><span class="dtime f_l">{{substr($v->updated_at, 0, 10)}}</span><span class="viewnum f_l">浏览（<a href="/">{{$v->watch}}</a>）</span><span class="f_r"><a href="{{url('/article/'.$v->id)}}" class="more">阅读原文>></a></span></div>
                         </li>

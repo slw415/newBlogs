@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model\Comment;
+use App\Model\Message;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -31,5 +32,10 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    // 关联到message
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 }

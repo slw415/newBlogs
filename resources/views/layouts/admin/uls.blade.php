@@ -38,11 +38,15 @@
                 <dd class=" gray list-group-item "><a href="{{url('/admin/articles')}}"><i class="icon-pencil"></i>文章管理</a></dd>
         </dl>
         @endcan
+        @can('Review-management')
         <dl  class="list-group ">
                 <dt class="black list-group-item item2"><a href="#"><i class=" icon-text-width"></i> 评论管理</a></dt>
-                <dd class=" gray list-group-item "><a href="{{url('/admin/messages')}}"><i class=" icon-text-width"></i>评论管理</a></dd>
+                <dd class=" gray list-group-item "><a href="{{url('/admin/message')}}"><i class=" icon-text-width"></i>评论管理</a></dd>
         </dl>
+        @endcan
+        @can('Message-management')
         <dl  class="list-group ">
                 <dt class="black list-group-item item2"><a href="#"><i class=" icon-file-alt"></i> 留言管理</a></dt>
-                <dd class=" gray list-group-item "><a href="{{url('/admin/messages')}}"><i class="icon-file-alt"></i>留言管理</a></dd>
+                <dd class=" gray list-group-item "><a href="{{url('/admin/words')}}"><i class="icon-file-alt"></i>留言管理</a></dd>
         </dl>
+        @endcan
