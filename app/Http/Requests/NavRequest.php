@@ -25,7 +25,7 @@ class NavRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'title' => 'required|between:15,20',
+            'title' => 'required|between:10,15',
         ];
 
     }
