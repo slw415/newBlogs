@@ -17,8 +17,8 @@
 >*缓存管理
 
 >##样式
->后台主要用bootstrap搭建也用了layui
->前台引用了杨青的前台模板
+<p>后台主要用bootstrap搭建也用了layui</p>
+<p>前台引用了杨青的前台模板</p>
 
 >## 安装方法
 >1.git clone https://github.com/slw415/newBlogs.git
