@@ -7,23 +7,23 @@
 文章页
 ![文章页](public/images/3.png)
 
-## 功能
-*支持多用户管理
-*前后台用户分离管理
-*文章管理
-*导航栏管理
-*评论.留言管理
-*友情链接管理
-*缓存管理
+>## 功能
+>*支持多用户管理
+>*前后台用户分离管理
+>*文章管理
+>*导航栏管理
+>*评论.留言管理
+>*友情链接管理
+>*缓存管理
 
-##样式
-后台主要用bootstrap搭建也用了layui
-前台引用了杨青的前台模板
+>##样式
+>后台主要用bootstrap搭建也用了layui
+>前台引用了杨青的前台模板
 
-## 安装方法
-1.git clone https://github.com/slw415/newBlogs.git
-2.composer update
-3php artisan migrate
-4.修改.env文件
+>## 安装方法
+>1.git clone https://github.com/slw415/newBlogs.git
+>2.composer update
+>3php artisan migrate
+>4.修改.env文件
 
  
