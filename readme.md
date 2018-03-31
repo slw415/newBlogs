@@ -18,12 +18,17 @@
 
 >##样式
 后台主要用bootstrap搭建也用了layui
+
 前台引用了杨青的前台模板
 
 >## 安装方法
+
 git clone https://github.com/slw415/newBlogs.git
+
 composer update
+
 php artisan migrate
+
 修改.env文件
 
  
