@@ -17,13 +17,13 @@
 >*缓存管理
 
 >##样式
-<p>后台主要用bootstrap搭建也用了layui</p>
-<p>前台引用了杨青的前台模板</p>
+后台主要用bootstrap搭建也用了layui
+前台引用了杨青的前台模板
 
 >## 安装方法
->1.git clone https://github.com/slw415/newBlogs.git
->2.composer update
->3php artisan migrate
->4.修改.env文件
+git clone https://github.com/slw415/newBlogs.git
+composer update
+php artisan migrate
+修改.env文件
 
  
