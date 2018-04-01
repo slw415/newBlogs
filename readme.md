@@ -35,6 +35,11 @@ composer update
 
 php artisan migrate
 
-修改.env文件
+修改.env文件 
 
- 
+>## 后台登陆
+
+http://www.slwcnbk.cn/admin/login
+
+账号：slw415 密码：slw415415
+  
